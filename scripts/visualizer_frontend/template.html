@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JSON Visualization - __TITLE__</title>
+<style>
+__CSS__
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="pane-head">
+      <h1>JSON Visualization</h1>
+      <div class="subtle">Top: <strong id="topName"></strong> · <span id="moduleCount"></span> modules</div>
+    </div>
+    <div class="search">
+      <input id="moduleSearch" type="search" placeholder="Search module or instance">
+      <input id="traceInput" type="search" placeholder="Trace signal, port, or instance">
+    </div>
+    <div id="moduleList" class="module-list"></div>
+  </aside>
+
+  <main class="main">
+    <div class="toolbar">
+      <div>
+        <div id="activeTitle" class="active-title"></div>
+        <div id="breadcrumb" class="breadcrumb"></div>
+        <div id="activeMeta" class="subtle"></div>
+      </div>
+      <div class="toolbar-actions">
+        <div class="tabs">
+          <button class="tab-btn active" data-view="hierarchy">Hierarchy</button>
+          <button class="tab-btn" data-view="module">Module</button>
+          <button class="tab-btn" data-view="trace">Trace</button>
+        </div>
+        <button class="icon-btn" id="zoomOut" title="Zoom out">−</button>
+        <button class="icon-btn" id="zoomIn" title="Zoom in">+</button>
+        <button class="icon-btn" id="fitView" title="Fit view">⌂</button>
+        <button class="mode-btn" id="expandAll" title="Expand all trees in hierarchy view">Expand All</button>
+        <button class="mode-btn" id="exportSvg" title="Export current diagram as PNG">Export PNG</button>
+      </div>
+    </div>
+    <div class="canvas-shell">
+      <svg id="diagram" role="img" aria-label="Block design diagram"></svg>
+      <div id="overview" class="overview"></div>
+    </div>
+  </main>
+
+  <aside class="inspector">
+    <div class="pane-head">
+      <h1>Inspector</h1>
+      <div id="inspectorHint" class="subtle">Select a node or edge</div>
+    </div>
+    <div class="section">
+      <h2>Summary</h2>
+      <div id="summary" class="kv"></div>
+    </div>
+    <div class="section">
+      <h2>Connections</h2>
+      <div id="connectionsPanel"></div>
+    </div>
+    <div class="section">
+      <h2>JSON</h2>
+      <pre id="jsonPanel">{}</pre>
+    </div>
+  </aside>
+</div>
+
+<script>
+window.__VISUALIZER_MODEL__ = __MODEL__;
+</script>
+<script>
+__JS__
+</script>
+</body>
+</html>

@@ -16,12 +16,17 @@ Verilog/Json converter
 ```
 
 ## Json Visualization
-Support Json to Dot/SVG.
+Support Json to interactive HTML and Dot/SVG.
 ```shell
 (base) root@DESKTOP-SRPEBB4:/home/gzr/new_test# python scripts/visualize_block.py output/design_riscv.json --format svg -o output/diagrams/design_riscv.svg
 Warning: Orthogonal edges do not currently handle edge labels. Try using xlabels.
 [OK] 已生成 SVG 文件: output/diagrams/design_riscv.svg
+
+# Browser-based visualization with Hierarchy / Module / Trace views, zoom/pan canvas,
+# node inspector, signal tracing, and SVG export.
+python scripts/visualize_block.py output/design_riscv.json --format html -o output/diagrams/design_riscv_interactive.html
 ```
+Frontend source for the browser visualizer lives in `scripts/visualizer_frontend/`.
 
 ## LLM Editing
 ```shell

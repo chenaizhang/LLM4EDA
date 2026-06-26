@@ -1,0 +1,79 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+.python-version
+
+# Python cache and packaging
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+
+# C/C++ and gem5 build artifacts
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.pyo
+gem5/build/
+gem5/.sconsign.dblite
+gem5/m5out/
+
+# Verilog/SystemVerilog simulator outputs
+*.vcd
+*.fst
+*.fsdb
+*.wlf
+*.lxt
+*.lxt2
+*.vvp
+*.out
+*.jou
+*.pb
+*.str
+*.history
+transcript
+work/
+xsim.dir/
+simv*
+csrc/
+ucli.key
+
+# Project-generated scratch output
+output/tmp/
+output/logs/
+output/cache/
