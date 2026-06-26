@@ -1,6 +1,0 @@
-Import('*')
-
-SimObject('riscv_pipe_ctrl.py', sim_objects=['RiscvPipeCtrl'])
-Source('riscv_pipe_ctrl.cc')
-SConscript('riscv_pipe_ctrl_test/SConscript')
-DebugFlag('RiscvPipeCtrl')
