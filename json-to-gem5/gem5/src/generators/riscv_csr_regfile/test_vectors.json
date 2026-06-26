@@ -1,0 +1,270 @@
+{
+  "module_type": "sequential",
+  "test_vectors": [
+    {
+      "id": "CSR_TP001",
+      "desc": "Read mstatus at reset - should return initial value 0x00001800",
+      "inputs": {
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 768
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP002",
+      "desc": "Write mstatus with 0x00001880 (set MIE=1), then read back",
+      "inputs": {
+        "setCsrWaddrI": 768,
+        "setCsrWdataI": 3968,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 768
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP003",
+      "desc": "Write mie with MEIE+MTIE+MSIE bits set, read back",
+      "inputs": {
+        "setCsrWaddrI": 772,
+        "setCsrWdataI": 2730,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 772
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP004",
+      "desc": "Write mtvec with base 0x80000100, read back",
+      "inputs": {
+        "setCsrWaddrI": 773,
+        "setCsrWdataI": 2147483904,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 773
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP005",
+      "desc": "Write mscratch with 0xDEADBEEF, read back",
+      "inputs": {
+        "setCsrWaddrI": 832,
+        "setCsrWdataI": 3735928559,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 832
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP006",
+      "desc": "Write mepc with 0x80000010 (aligned), read back",
+      "inputs": {
+        "setCsrWaddrI": 833,
+        "setCsrWdataI": 2147483664,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 833
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP007",
+      "desc": "Write mcause with interrupt cause 11 (MEI), read back",
+      "inputs": {
+        "setCsrWaddrI": 834,
+        "setCsrWdataI": 2147483659,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 834
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP008",
+      "desc": "Write mtval with 0xBAD0FF1E, read back",
+      "inputs": {
+        "setCsrWaddrI": 835,
+        "setCsrWdataI": 3131245342,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 835
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP009",
+      "desc": "Write mcycle with 0x12345678, read back",
+      "inputs": {
+        "setCsrWaddrI": 2816,
+        "setCsrWdataI": 305419896,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 2816
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP010",
+      "desc": "Write mcycleh with 0x87654321, read back",
+      "inputs": {
+        "setCsrWaddrI": 2944,
+        "setCsrWdataI": 2271560481,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 2944
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP011",
+      "desc": "Write mtimecmp with 0xFFFF0000, read back",
+      "inputs": {
+        "setCsrWaddrI": 1984,
+        "setCsrWdataI": 4294901760,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 1984
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP012",
+      "desc": "Write satp with 0x80000001, read back",
+      "inputs": {
+        "setCsrWaddrI": 384,
+        "setCsrWdataI": 2147483649,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 384
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP013",
+      "desc": "Write sscratch with 0xA5A5A5A5, read back",
+      "inputs": {
+        "setCsrWaddrI": 320,
+        "setCsrWdataI": 2779096485,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 320
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP014",
+      "desc": "Write sepc (aligned address), read back",
+      "inputs": {
+        "setCsrWaddrI": 321,
+        "setCsrWdataI": 2147483680,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 321
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP015",
+      "desc": "Write scause with interrupt cause, read back",
+      "inputs": {
+        "setCsrWaddrI": 322,
+        "setCsrWdataI": 2147483655,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 322
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP016",
+      "desc": "Write stvec with new base, read back",
+      "inputs": {
+        "setCsrWaddrI": 261,
+        "setCsrWdataI": 2147484672,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 261
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP017",
+      "desc": "Write medeleg with exception delegation mask, read back",
+      "inputs": {
+        "setCsrWaddrI": 770,
+        "setCsrWdataI": 4375,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 770
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP018",
+      "desc": "Write mideleg with interrupt delegation mask, read back",
+      "inputs": {
+        "setCsrWaddrI": 771,
+        "setCsrWdataI": 2730,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 771
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP019",
+      "desc": "Exception handling in machine mode: trigger exception with code 2 (illegal instruction)",
+      "inputs": {
+        "setExceptionI": 34,
+        "setExceptionPcI": 2147483680,
+        "setExceptionAddrI": 0
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP020",
+      "desc": "Set external interrupt high, check mip update via interrupt_o",
+      "inputs": {
+        "setExtIntrI": 1
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP021",
+      "desc": "Set timer interrupt high, check mip update",
+      "inputs": {
+        "setTimerIntrI": 1
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP022",
+      "desc": "Write sstatus via CSR 0x100 (alias to mstatus bits), read mstatus to verify",
+      "inputs": {
+        "setCsrWaddrI": 256,
+        "setCsrWdataI": 269,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 768
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP023",
+      "desc": "Read misa after setting misa_i input (read-only register check)",
+      "inputs": {
+        "setMisaI": 4194304,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 769
+      },
+      "wait_cycles": 2
+    },
+    {
+      "id": "CSR_TP024",
+      "desc": "Write mstatus with masked bits (bits outside mask should be cleared)",
+      "inputs": {
+        "setCsrWaddrI": 768,
+        "setCsrWdataI": 4294967295,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 768
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "CSR_TP025",
+      "desc": "Write mepc with non-aligned address (bits 1:0 should be cleared by mask)",
+      "inputs": {
+        "setCsrWaddrI": 833,
+        "setCsrWdataI": 2147483655,
+        "setCsrRenI": 1,
+        "setCsrRaddrI": 833
+      },
+      "wait_cycles": 1
+    }
+  ]
+}

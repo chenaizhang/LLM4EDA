@@ -1,0 +1,9 @@
+Import('*')
+
+SimObject('RiscvCore.py', sim_objects=['RiscvCore'])
+Source('riscv_core.cc')
+
+SConscript('riscv_core_test/SConscript')
+
+DebugFlag('DUT')
+DebugFlag('TestGenerator')

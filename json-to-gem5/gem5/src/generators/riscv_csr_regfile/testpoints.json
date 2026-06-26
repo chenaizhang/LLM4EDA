@@ -1,0 +1,29 @@
+{
+  "testpoints": [
+    "TP001: Read mstatus initial value",
+    "TP002: Write and read mstatus",
+    "TP003: Write and read mie",
+    "TP004: Write and read mtvec",
+    "TP005: Write and read mscratch",
+    "TP006: Write and read mepc",
+    "TP007: Write and read mcause",
+    "TP008: Write and read mtval",
+    "TP009: Write and read mcycle",
+    "TP010: Write and read mcycleh",
+    "TP011: Write and read mtimecmp",
+    "TP012: Write and read satp",
+    "TP013: Write and read sscratch",
+    "TP014: Write and read sepc",
+    "TP015: Write and read scause",
+    "TP016: Write and read stvec",
+    "TP017: Write and read medeleg",
+    "TP018: Write and read mideleg",
+    "TP019: Exception handling (machine mode)",
+    "TP020: External interrupt mip update",
+    "TP021: Timer interrupt mip update",
+    "TP022: sstatus alias to mstatus bits",
+    "TP023: misa register read via misa_i input",
+    "TP024: Masked write to mstatus",
+    "TP025: mepc alignment mask"
+  ]
+}

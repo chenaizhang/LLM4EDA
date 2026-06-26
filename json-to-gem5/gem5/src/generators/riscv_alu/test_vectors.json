@@ -1,0 +1,389 @@
+{
+  "module_type": "combinational",
+  "test_vectors": [
+    {
+      "id": "TP001",
+      "desc": "ALU_NONE passthrough: output equals alu_a_i",
+      "inputs": {
+        "setAluA": 3735928559,
+        "setAluB": 0,
+        "setAluOp": 0
+      },
+      "expected": {
+        "getAluP": 3735928559
+      }
+    },
+    {
+      "id": "TP002",
+      "desc": "ALU_ADD: basic addition 5 + 3 = 8",
+      "inputs": {
+        "setAluA": 5,
+        "setAluB": 3,
+        "setAluOp": 4
+      },
+      "expected": {
+        "getAluP": 8
+      }
+    },
+    {
+      "id": "TP003",
+      "desc": "ALU_SUB: basic subtraction 8 - 3 = 5",
+      "inputs": {
+        "setAluA": 8,
+        "setAluB": 3,
+        "setAluOp": 6
+      },
+      "expected": {
+        "getAluP": 5
+      }
+    },
+    {
+      "id": "TP004",
+      "desc": "ALU_AND: bitwise AND of alternating patterns",
+      "inputs": {
+        "setAluA": 4278255360,
+        "setAluB": 252645135,
+        "setAluOp": 7
+      },
+      "expected": {
+        "getAluP": 252579600
+      }
+    },
+    {
+      "id": "TP005",
+      "desc": "ALU_OR: bitwise OR of alternating patterns",
+      "inputs": {
+        "setAluA": 4278255360,
+        "setAluB": 252645135,
+        "setAluOp": 8
+      },
+      "expected": {
+        "getAluP": 4280282895
+      }
+    },
+    {
+      "id": "TP006",
+      "desc": "ALU_XOR: bitwise XOR of alternating patterns",
+      "inputs": {
+        "setAluA": 4278255360,
+        "setAluB": 252645135,
+        "setAluOp": 9
+      },
+      "expected": {
+        "getAluP": 4027703295
+      }
+    },
+    {
+      "id": "TP007",
+      "desc": "ALU_SHIFTL: left shift by 4 (single barrel stage: bit 2)",
+      "inputs": {
+        "setAluA": 1,
+        "setAluB": 4,
+        "setAluOp": 1
+      },
+      "expected": {
+        "getAluP": 16
+      }
+    },
+    {
+      "id": "TP008",
+      "desc": "ALU_SHIFTL: left shift by 15 (multi-stage: 1+2+4+8)",
+      "inputs": {
+        "setAluA": 1,
+        "setAluB": 15,
+        "setAluOp": 1
+      },
+      "expected": {
+        "getAluP": 32768
+      }
+    },
+    {
+      "id": "TP009",
+      "desc": "ALU_SHIFTR: logical right shift by 3 (multi-stage: 1+2)",
+      "inputs": {
+        "setAluA": 2147483648,
+        "setAluB": 3,
+        "setAluOp": 2
+      },
+      "expected": {
+        "getAluP": 268435456
+      }
+    },
+    {
+      "id": "TP010",
+      "desc": "ALU_SHIFTR_ARITH: arithmetic right shift of negative number by 3",
+      "inputs": {
+        "setAluA": 2147483648,
+        "setAluB": 3,
+        "setAluOp": 3
+      },
+      "expected": {
+        "getAluP": 4026531840
+      }
+    },
+    {
+      "id": "TP011",
+      "desc": "ALU_SHIFTR_ARITH: arithmetic right shift of positive number by 4",
+      "inputs": {
+        "setAluA": 2147483647,
+        "setAluB": 4,
+        "setAluOp": 3
+      },
+      "expected": {
+        "getAluP": 134217727
+      }
+    },
+    {
+      "id": "TP012",
+      "desc": "ALU_LESS_THAN unsigned: 1 < 2, result true (1)",
+      "inputs": {
+        "setAluA": 1,
+        "setAluB": 2,
+        "setAluOp": 10
+      },
+      "expected": {
+        "getAluP": 1
+      }
+    },
+    {
+      "id": "TP013",
+      "desc": "ALU_LESS_THAN unsigned: 3 < 2, result false (0)",
+      "inputs": {
+        "setAluA": 3,
+        "setAluB": 2,
+        "setAluOp": 10
+      },
+      "expected": {
+        "getAluP": 0
+      }
+    },
+    {
+      "id": "TP014",
+      "desc": "ALU_LESS_THAN_SIGNED: -1 < 1, result true (1)",
+      "inputs": {
+        "setAluA": 4294967295,
+        "setAluB": 1,
+        "setAluOp": 11
+      },
+      "expected": {
+        "getAluP": 1
+      }
+    },
+    {
+      "id": "TP015",
+      "desc": "ALU_LESS_THAN_SIGNED: 2 < -1, result false (0)",
+      "inputs": {
+        "setAluA": 2,
+        "setAluB": 4294967295,
+        "setAluOp": 11
+      },
+      "expected": {
+        "getAluP": 0
+      }
+    },
+    {
+      "id": "TP016",
+      "desc": "ALU_ADD: overflow 0xFFFFFFFF + 1 = 0x00000000",
+      "inputs": {
+        "setAluA": 4294967295,
+        "setAluB": 1,
+        "setAluOp": 4
+      },
+      "expected": {
+        "getAluP": 0
+      }
+    },
+    {
+      "id": "TP017",
+      "desc": "ALU_SUB: underflow 0 - 1 = 0xFFFFFFFF",
+      "inputs": {
+        "setAluA": 0,
+        "setAluB": 1,
+        "setAluOp": 6
+      },
+      "expected": {
+        "getAluP": 4294967295
+      }
+    },
+    {
+      "id": "TP018",
+      "desc": "ALU_SHIFTL: shift by 0, output equals input",
+      "inputs": {
+        "setAluA": 4275878552,
+        "setAluB": 0,
+        "setAluOp": 1
+      },
+      "expected": {
+        "getAluP": 4275878552
+      }
+    },
+    {
+      "id": "TP019",
+      "desc": "ALU_SHIFTL: shift by 31 (all 5 barrel stages), 1 << 31 = 0x80000000",
+      "inputs": {
+        "setAluA": 1,
+        "setAluB": 31,
+        "setAluOp": 1
+      },
+      "expected": {
+        "getAluP": 2147483648
+      }
+    },
+    {
+      "id": "TP020",
+      "desc": "ALU_NONE: passthrough with zero inputs",
+      "inputs": {
+        "setAluA": 0,
+        "setAluB": 0,
+        "setAluOp": 0
+      },
+      "expected": {
+        "getAluP": 0
+      }
+    },
+    {
+      "id": "TP021",
+      "desc": "ALU_ADD: zero plus zero",
+      "inputs": {
+        "setAluA": 0,
+        "setAluB": 0,
+        "setAluOp": 4
+      },
+      "expected": {
+        "getAluP": 0
+      }
+    },
+    {
+      "id": "TP022",
+      "desc": "ALU_SUB: 5 - 5 = 0",
+      "inputs": {
+        "setAluA": 5,
+        "setAluB": 5,
+        "setAluOp": 6
+      },
+      "expected": {
+        "getAluP": 0
+      }
+    },
+    {
+      "id": "TP023",
+      "desc": "ALU_AND: AND with zero mask, result zero",
+      "inputs": {
+        "setAluA": 4294901760,
+        "setAluB": 0,
+        "setAluOp": 7
+      },
+      "expected": {
+        "getAluP": 0
+      }
+    },
+    {
+      "id": "TP024",
+      "desc": "ALU_OR: OR with all-ones mask, result all-ones",
+      "inputs": {
+        "setAluA": 16711680,
+        "setAluB": 4294967295,
+        "setAluOp": 8
+      },
+      "expected": {
+        "getAluP": 4294967295
+      }
+    },
+    {
+      "id": "TP025",
+      "desc": "ALU_XOR: XOR with self, result zero",
+      "inputs": {
+        "setAluA": 2779096485,
+        "setAluB": 2779096485,
+        "setAluOp": 9
+      },
+      "expected": {
+        "getAluP": 0
+      }
+    },
+    {
+      "id": "TP026",
+      "desc": "ALU_ADD: 0x7FFFFFFF + 0x7FFFFFFF = 0xFFFFFFFE",
+      "inputs": {
+        "setAluA": 2147483647,
+        "setAluB": 2147483647,
+        "setAluOp": 4
+      },
+      "expected": {
+        "getAluP": 4294967294
+      }
+    },
+    {
+      "id": "TP027",
+      "desc": "ALU_LESS_THAN unsigned: 0xFFFFFFFF < 0x00000000, result false (0)",
+      "inputs": {
+        "setAluA": 4294967295,
+        "setAluB": 0,
+        "setAluOp": 10
+      },
+      "expected": {
+        "getAluP": 0
+      }
+    },
+    {
+      "id": "TP028",
+      "desc": "ALU_LESS_THAN_SIGNED: INT32_MIN < INT32_MAX, result true (1)",
+      "inputs": {
+        "setAluA": 2147483648,
+        "setAluB": 2147483647,
+        "setAluOp": 11
+      },
+      "expected": {
+        "getAluP": 1
+      }
+    },
+    {
+      "id": "TP029",
+      "desc": "ALU_SUB: 3 - 5 = 0xFFFFFFFE (unsigned wrap)",
+      "inputs": {
+        "setAluA": 3,
+        "setAluB": 5,
+        "setAluOp": 6
+      },
+      "expected": {
+        "getAluP": 4294967294
+      }
+    },
+    {
+      "id": "TP030",
+      "desc": "ALU_SHIFTR: logical right shift of MSB-set value by 1, ensures zero-fill",
+      "inputs": {
+        "setAluA": 2147483648,
+        "setAluB": 1,
+        "setAluOp": 2
+      },
+      "expected": {
+        "getAluP": 1073741824
+      }
+    },
+    {
+      "id": "TP031",
+      "desc": "Unrecognized opcode 0x5: default passthrough, output = alu_a_i",
+      "inputs": {
+        "setAluA": 305419896,
+        "setAluB": 2271560481,
+        "setAluOp": 5
+      },
+      "expected": {
+        "getAluP": 305419896
+      }
+    },
+    {
+      "id": "TP032",
+      "desc": "Invalid opcode 0xFF: default passthrough, output = alu_a_i",
+      "inputs": {
+        "setAluA": 2864434397,
+        "setAluB": 0,
+        "setAluOp": 255
+      },
+      "expected": {
+        "getAluP": 2864434397
+      }
+    }
+  ]
+}

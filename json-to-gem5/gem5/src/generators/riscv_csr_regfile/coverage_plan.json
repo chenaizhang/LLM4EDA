@@ -1,0 +1,44 @@
+{
+  "coverage_plan": [
+    {
+      "feature": "Machine mode CSR write/read",
+      "covered_by": ["CSR_TP001", "CSR_TP002", "CSR_TP003", "CSR_TP004", "CSR_TP005", "CSR_TP006", "CSR_TP007", "CSR_TP008", "CSR_TP009", "CSR_TP010", "CSR_TP011"],
+      "status": "covered"
+    },
+    {
+      "feature": "Supervisor mode CSR write/read",
+      "covered_by": ["CSR_TP012", "CSR_TP013", "CSR_TP014", "CSR_TP015", "CSR_TP016"],
+      "status": "covered"
+    },
+    {
+      "feature": "Exception delegation registers",
+      "covered_by": ["CSR_TP017", "CSR_TP018"],
+      "status": "covered"
+    },
+    {
+      "feature": "Exception handling",
+      "covered_by": ["CSR_TP019"],
+      "status": "covered"
+    },
+    {
+      "feature": "Interrupt handling",
+      "covered_by": ["CSR_TP020", "CSR_TP021"],
+      "status": "covered"
+    },
+    {
+      "feature": "sstatus alias to mstatus",
+      "covered_by": ["CSR_TP022"],
+      "status": "covered"
+    },
+    {
+      "feature": "misa read-only via input",
+      "covered_by": ["CSR_TP023"],
+      "status": "covered"
+    },
+    {
+      "feature": "Masked CSR writes",
+      "covered_by": ["CSR_TP024", "CSR_TP025"],
+      "status": "covered"
+    }
+  ]
+}

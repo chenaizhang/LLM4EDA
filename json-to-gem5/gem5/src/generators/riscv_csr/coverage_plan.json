@@ -1,0 +1,49 @@
+{
+  "coverage_plan": [
+    {
+      "feature": "CSR read instructions (CSRRW, CSRRS, CSRRC, CSRRWI)",
+      "covered_by": ["TP001", "TP002", "TP003", "TP004", "TP018"],
+      "status": "covered"
+    },
+    {
+      "feature": "System call instructions (ECALL, EBREAK)",
+      "covered_by": ["TP005", "TP006"],
+      "status": "covered"
+    },
+    {
+      "feature": "Return from exception (MRET, SRET)",
+      "covered_by": ["TP007", "TP008"],
+      "status": "covered"
+    },
+    {
+      "feature": "WFI and FENCE instructions",
+      "covered_by": ["TP009", "TP010"],
+      "status": "covered"
+    },
+    {
+      "feature": "External interrupt handling",
+      "covered_by": ["TP011", "TP012"],
+      "status": "covered"
+    },
+    {
+      "feature": "Exception handling and priority",
+      "covered_by": ["TP013"],
+      "status": "covered"
+    },
+    {
+      "feature": "Error handling (invalid opcode)",
+      "covered_by": ["TP014"],
+      "status": "covered"
+    },
+    {
+      "feature": "MMU control signal generation (satp, mxr, sum, mprv)",
+      "covered_by": ["TP015", "TP016"],
+      "status": "covered"
+    },
+    {
+      "feature": "Idle state behavior",
+      "covered_by": ["TP017"],
+      "status": "covered"
+    }
+  ]
+}

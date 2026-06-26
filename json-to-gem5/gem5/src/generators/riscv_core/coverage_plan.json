@@ -1,0 +1,31 @@
+{
+  "module": "riscv_core",
+  "type": "sequential",
+  "coverage_goals": [
+    {
+      "id": "CG_RESET",
+      "desc": "Reset behavior: all external outputs zero when rst_i=1",
+      "testpoints": ["TP001", "TP002", "TP018"]
+    },
+    {
+      "id": "CG_MEM_I_HANDSHAKE",
+      "desc": "Instruction memory interface: accept, valid, error signals routed through MMU to Fetch",
+      "testpoints": ["TP003", "TP004", "TP005", "TP010", "TP011"]
+    },
+    {
+      "id": "CG_MEM_D_HANDSHAKE",
+      "desc": "Data memory interface: accept, ack, error signals routed through MMU to LSU",
+      "testpoints": ["TP006", "TP007", "TP008", "TP012", "TP013", "TP014", "TP015", "TP016"]
+    },
+    {
+      "id": "CG_INTERRUPT",
+      "desc": "Interrupt handling: intr_i propagated to CSR module",
+      "testpoints": ["TP009"]
+    },
+    {
+      "id": "CG_PIPELINE",
+      "desc": "Pipeline integration: all 5 stages connected and data flows end-to-end",
+      "testpoints": ["TP017"]
+    }
+  ]
+}

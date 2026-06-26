@@ -1,0 +1,92 @@
+[
+  {
+    "id": "TP001",
+    "name": "reset",
+    "desc": "Assert reset (rst_i=1), all external outputs zeroed"
+  },
+  {
+    "id": "TP002",
+    "name": "reset_deassert",
+    "desc": "Deassert reset (rst_i=0), verify pipeline resumes"
+  },
+  {
+    "id": "TP003",
+    "name": "mem_i_accept",
+    "desc": "Set mem_i_accept_i=1, verify instruction memory handshake acceptance"
+  },
+  {
+    "id": "TP004",
+    "name": "mem_i_valid",
+    "desc": "Set mem_i_valid_i=1, verify instruction memory valid response"
+  },
+  {
+    "id": "TP005",
+    "name": "mem_i_error",
+    "desc": "Set mem_i_error_i=1, verify error propagated through MMU"
+  },
+  {
+    "id": "TP006",
+    "name": "mem_d_accept",
+    "desc": "Set mem_d_accept_i=1, verify data memory handshake acceptance"
+  },
+  {
+    "id": "TP007",
+    "name": "mem_d_ack",
+    "desc": "Set mem_d_ack_i=1, verify data memory acknowledge"
+  },
+  {
+    "id": "TP008",
+    "name": "mem_d_error",
+    "desc": "Set mem_d_error_i=1, verify data memory error propagation"
+  },
+  {
+    "id": "TP009",
+    "name": "interrupt",
+    "desc": "Assert intr_i=1, verify interrupt taken by CSR"
+  },
+  {
+    "id": "TP010",
+    "name": "mem_i_rd_output",
+    "desc": "Monitor mem_i_rd_o after MMU processes fetch request"
+  },
+  {
+    "id": "TP011",
+    "name": "mem_i_flush_output",
+    "desc": "Monitor mem_i_flush_o after fetch flush request"
+  },
+  {
+    "id": "TP012",
+    "name": "mem_d_rd_output",
+    "desc": "Monitor mem_d_rd_o after LSU processes load"
+  },
+  {
+    "id": "TP013",
+    "name": "mem_d_cacheable_output",
+    "desc": "Monitor mem_d_cacheable_o for cacheable region detection"
+  },
+  {
+    "id": "TP014",
+    "name": "mem_d_flush_output",
+    "desc": "Monitor mem_d_flush_o after LSU flush request"
+  },
+  {
+    "id": "TP015",
+    "name": "mem_d_writeback_output",
+    "desc": "Monitor mem_d_writeback_o after LSU writeback request"
+  },
+  {
+    "id": "TP016",
+    "name": "mem_d_invalidate",
+    "desc": "Monitor mem_d_invalidate_o after LSU invalidate request"
+  },
+  {
+    "id": "TP017",
+    "name": "full_pipeline_flow",
+    "desc": "Exercise complete pipeline with valid memory responses"
+  },
+  {
+    "id": "TP018",
+    "name": "reset_during_operation",
+    "desc": "Assert reset while pipeline is active, verify clean reset"
+  }
+]

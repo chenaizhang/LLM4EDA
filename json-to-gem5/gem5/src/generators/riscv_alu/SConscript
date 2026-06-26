@@ -1,0 +1,5 @@
+Import('*')
+
+SimObject('riscv_alu.py', sim_objects=['RiscvAlu'])
+Source('riscv_alu.cc')
+SConscript('riscv_alu_test/SConscript')

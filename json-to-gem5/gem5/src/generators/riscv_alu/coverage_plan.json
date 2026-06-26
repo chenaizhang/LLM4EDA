@@ -1,0 +1,58 @@
+{
+  "module_type": "combinational",
+  "coverage_groups": [
+    {
+      "id": "CG_BASIC",
+      "name": "basic_function",
+      "description": "Cover all ALU operation types with typical input values",
+      "transactions": 12,
+      "constraint": "each ALU opcode exercised at least once",
+      "testpoint_ids": ["TP001", "TP002", "TP003", "TP004", "TP005", "TP006", "TP012", "TP014"]
+    },
+    {
+      "id": "CG_SHIFT",
+      "name": "shift_operations",
+      "description": "Cover barrel shifter: all 5 stages individually and combined, all shift types",
+      "transactions": 8,
+      "constraint": "shift amounts covering single-bit and multi-bit combinations (0, 1, 2, 4, 8, 16, 15, 31)",
+      "testpoint_ids": ["TP007", "TP008", "TP009", "TP010", "TP011", "TP018", "TP019", "TP030"]
+    },
+    {
+      "id": "CG_COMPARE",
+      "name": "comparison_operations",
+      "description": "Cover unsigned and signed comparison true/false paths, including boundary values",
+      "transactions": 6,
+      "constraint": "comparisons with small values, large values, sign-boundary values",
+      "testpoint_ids": ["TP012", "TP013", "TP014", "TP015", "TP027", "TP028"]
+    },
+    {
+      "id": "CG_BOUNDARY",
+      "name": "boundary_conditions",
+      "description": "Cover overflow, underflow, zero, all-ones, and max/min operands",
+      "transactions": 8,
+      "constraint": "include wrap-around arithmetic results and edge-case comparisons",
+      "testpoint_ids": ["TP016", "TP017", "TP020", "TP021", "TP022", "TP026", "TP029"]
+    },
+    {
+      "id": "CG_BITWISE_EDGE",
+      "name": "bitwise_edge",
+      "description": "Cover bitwise operations with zero, all-ones, and self masks",
+      "transactions": 4,
+      "constraint": "each bitwise op exercised with at least one edge-case mask",
+      "testpoint_ids": ["TP023", "TP024", "TP025"]
+    },
+    {
+      "id": "CG_ERROR",
+      "name": "error_handling",
+      "description": "Cover default passthrough behavior for unrecognized or invalid opcodes",
+      "transactions": 2,
+      "constraint": "invalid opcode values 0x5 and 0xFF must be tested",
+      "testpoint_ids": ["TP031", "TP032"]
+    }
+  ],
+  "coverage_model": {
+    "opcode_coverage": "all 11 defined opcodes plus 2 invalid opcodes must be exercised",
+    "result_value_coverage": "result values of 0, 1, max, and alternating patterns must appear",
+    "barrel_stage_coverage": "each of the 5 barrel shifter stages must be triggered individually and in combination"
+  }
+}

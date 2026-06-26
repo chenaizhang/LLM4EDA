@@ -1,0 +1,148 @@
+{
+  "testpoints": [
+    {
+      "id": "TP001",
+      "name": "csrrw_read_mstatus",
+      "description": "CSRRW x1, mstatus: read mstatus value via CSR read, csr_result_e1_write_o asserted",
+      "group": "csr_instructions",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP002",
+      "name": "csrrs_read_mstatus",
+      "description": "CSRRS x1, mstatus: atomic read-and-set of mstatus via CSRRS instruction",
+      "group": "csr_instructions",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP003",
+      "name": "csrrc_read_clear_mstatus",
+      "description": "CSRRC x1, mstatus: atomic read-and-clear of mstatus via CSRRC instruction",
+      "group": "csr_instructions",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP004",
+      "name": "csrrwi_immediate_read",
+      "description": "CSRRWI x1, mstatus: immediate-form CSR read with uimm=0 (no register write)",
+      "group": "csr_instructions",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP005",
+      "name": "ecall_machine_mode",
+      "description": "ECALL from M-mode: generates synchronous exception with cause code 11",
+      "group": "system_instructions",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP006",
+      "name": "ebreak",
+      "description": "EBREAK: generates breakpoint exception with cause code 3",
+      "group": "system_instructions",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP007",
+      "name": "mret_return",
+      "description": "MRET: reads MEPC, restores MIE from MPIE, sets MPP=0, generates branch to return address",
+      "group": "eret",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP008",
+      "name": "sret_return",
+      "description": "SRET: reads SEPC, restores SIE from SPIE, sets SPP=0, generates branch to return address",
+      "group": "eret",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP009",
+      "name": "wfi_no_action",
+      "description": "WFI: wait for interrupt, no special action in simplified implementation, no exception generated",
+      "group": "system_instructions",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP010",
+      "name": "fence_instruction",
+      "description": "FENCE instruction: sets ifence_o flag to 1",
+      "group": "system_instructions",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP011",
+      "name": "external_interrupt_taken",
+      "description": "External interrupt signal asserted: take_interrupt_o asserted when interrupts enabled",
+      "group": "interrupt",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP012",
+      "name": "external_interrupt_inhibited",
+      "description": "External interrupt with interrupt_inhibit active: take_interrupt_o remains deasserted",
+      "group": "interrupt",
+      "priority": "P0",
+      "dimension": "negative"
+    },
+    {
+      "id": "TP013",
+      "name": "writeback_exception_priority",
+      "description": "Writeback stage exception (bit 5 set) takes priority over decode stage exceptions",
+      "group": "exception",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP014",
+      "name": "opcode_invalid",
+      "description": "Invalid opcode signal prevents CSR instruction decode, no outputs asserted",
+      "group": "error_handling",
+      "priority": "P1",
+      "dimension": "negative"
+    },
+    {
+      "id": "TP015",
+      "name": "satp_change_triggers_flush",
+      "description": "SATP value change detected: mmu_flush_o asserted for one cycle",
+      "group": "mmu_control",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP016",
+      "name": "mmu_control_from_mstatus",
+      "description": "MXR, SUM, MPRV bits in mstatus affect mmu_mxr_o, mmu_sum_o, mmu_priv_d_o",
+      "group": "mmu_control",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP017",
+      "name": "no_valid_opcode",
+      "description": "No valid opcode: no CSR read, no branch, all outputs remain at default",
+      "group": "idle",
+      "priority": "P1",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP018",
+      "name": "csr_result_e1_value_output",
+      "description": "CSR instruction read data appears on csr_result_e1_value_o and csr_result_e1_wdata_o",
+      "group": "csr_instructions",
+      "priority": "P0",
+      "dimension": "positive"
+    }
+  ]
+}

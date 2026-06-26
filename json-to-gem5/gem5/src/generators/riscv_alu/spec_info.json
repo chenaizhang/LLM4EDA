@@ -1,0 +1,38 @@
+{
+  "module_name": "riscv_alu",
+  "module_type": "combinational",
+  "description": "RISC-V Arithmetic Logic Unit - combinational sub-module of riscv_exec",
+  "ports": {
+    "inputs": [
+      {"name": "alu_a_i", "width": 32, "direction": "input", "description": "ALU operand A"},
+      {"name": "alu_b_i", "width": 32, "direction": "input", "description": "ALU operand B"},
+      {"name": "alu_op_i", "width": 4, "direction": "input", "description": "ALU operation code"}
+    ],
+    "outputs": [
+      {"name": "alu_p_o", "width": 32, "direction": "output", "description": "ALU result"}
+    ]
+  },
+  "setters": ["setAluA", "setAluB", "setAluOp"],
+  "getters": ["getAluP"],
+  "operations": {
+    "ALU_NONE": 0,
+    "ALU_SHIFTL": 1,
+    "ALU_SHIFTR": 2,
+    "ALU_SHIFTR_ARITH": 3,
+    "ALU_ADD": 4,
+    "ALU_SUB": 6,
+    "ALU_AND": 7,
+    "ALU_OR": 8,
+    "ALU_XOR": 9,
+    "ALU_LESS_THAN": 10,
+    "ALU_LESS_THAN_SIGNED": 11
+  },
+  "risk_points": [
+    "Barrel shifter accumulates intermediate results across 5 stages, each conditional on a bit of shamt",
+    "Arithmetic right shift uses signed int32_t cast, sign extension is implementation-defined behavior across shift stages",
+    "Unsigned comparison uses full 32-bit range, including values > INT32_MAX",
+    "Signed comparison uses int32_t cast, edge case with 0x80000000 (INT32_MIN)",
+    "ALU_SUB is opcode 0x6 (not 0x5), non-contiguous opcode space",
+    "Default case (unrecognized opcode) falls through to passthrough"
+  ]
+}

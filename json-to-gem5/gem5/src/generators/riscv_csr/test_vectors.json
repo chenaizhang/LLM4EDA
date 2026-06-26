@@ -1,0 +1,174 @@
+{
+  "module_type": "sequential",
+  "test_vectors": [
+    {
+      "id": "TP001",
+      "desc": "CSRRW x1, mstatus: read mstatus, csr_result_e1_value_o returns mstatus value, csr_result_e1_write_o=1",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 805306611
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP002",
+      "desc": "CSRRS x1, mstatus: atomic read-and-set of mstatus, CSR read data on value_o output",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 805307123
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP003",
+      "desc": "CSRRC x1, mstatus: atomic read-and-clear of mstatus, CSR read data on value_o output",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 805307635
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP004",
+      "desc": "CSRRWI x1, mstatus: immediate-form CSR read, csr_result_e1_write_o=1, value on csr_result_e1_value_o",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 805310067
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP005",
+      "desc": "ECALL from M-mode: generates exception cause 11 via csrfile, branch target updated by regfile",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 115,
+        "setOpcodePcI": 2147483680
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP006",
+      "desc": "EBREAK: generates breakpoint exception cause 3, exception PC forwarded to regfile",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 1048627,
+        "setOpcodePcI": 2147483684
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP007",
+      "desc": "MRET: branch_csr_request_o=1, branch target from MEPC, ifence_o=1, privilege from MPP",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 50463251,
+        "setOpcodePcI": 2147483688
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP008",
+      "desc": "SRET: branch_csr_request_o=1, branch target from SEPC, ifence_o=1, privilege from SPP",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 16909011,
+        "setOpcodePcI": 2147483692
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP009",
+      "desc": "WFI: no exception generated, no branch request, opcode consumed without action",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 17113171,
+        "setOpcodePcI": 2147483696
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP010",
+      "desc": "FENCE instruction: ifence_o=1, no other CSR action",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 15,
+        "setOpcodePcI": 2147483700
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP011",
+      "desc": "External interrupt asserted: interrupt forwarded to csrfile, take_interrupt_o depends on regfile state",
+      "inputs": {
+        "setIntrI": 1
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP012",
+      "desc": "External interrupt with interrupt_inhibit: effective interrupt masked, take_interrupt_o=0",
+      "inputs": {
+        "setIntrI": 1,
+        "setInterruptInhibitI": 1
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP013",
+      "desc": "Writeback exception (bit 5 set) has priority: forwarded to regfile even during valid opcode",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 805306611,
+        "setCsrWritebackExceptionI": 37
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP014",
+      "desc": "Opcode invalid signal high: decode skipped, no CSR read, no branch, no exception generated",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeInvalidI": 1,
+        "setOpcodeOpcodeI": 805306611
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP015",
+      "desc": "SATP change via writeback: mmu_satp_o updated, mmu_flush_o asserted when satp differs from prev",
+      "inputs": {
+        "setCsrWritebackWriteI": 1,
+        "setCsrWritebackWaddrI": 384,
+        "setCsrWritebackWdataI": 2147483649
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP016",
+      "desc": "MXR and SUM bits reflected in mmu control outputs via mstatus readback in same cycle",
+      "inputs": {
+        "setCsrWritebackWriteI": 1,
+        "setCsrWritebackWaddrI": 768,
+        "setCsrWritebackWdataI": 786432
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP017",
+      "desc": "No valid opcode: all pulse outputs at zero, no CSR read, no branch, no exception",
+      "inputs": {},
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP018",
+      "desc": "CSRRW x1, mstatus with PC set: csr_result_e1_value_o=mstatus, csr_result_e1_wdata_o=mstatus, write=1",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 805306611,
+        "setOpcodePcI": 2147483712
+      },
+      "wait_cycles": 1
+    }
+  ]
+}

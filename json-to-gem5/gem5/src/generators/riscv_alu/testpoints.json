@@ -1,0 +1,260 @@
+{
+  "testpoints": [
+    {
+      "id": "TP001",
+      "name": "alu_none_passthrough",
+      "description": "ALU operation NONE (0x0): output equals alu_a_i directly",
+      "group": "basic_function",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP002",
+      "name": "alu_add_basic",
+      "description": "ALU operation ADD (0x4): basic addition of two small positive numbers",
+      "group": "basic_function",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP003",
+      "name": "alu_sub_basic",
+      "description": "ALU operation SUB (0x6): basic subtraction of two small positive numbers",
+      "group": "basic_function",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP004",
+      "name": "alu_and",
+      "description": "ALU operation AND (0x7): bitwise AND of alternating patterns",
+      "group": "bitwise",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP005",
+      "name": "alu_or",
+      "description": "ALU operation OR (0x8): bitwise OR of alternating patterns",
+      "group": "bitwise",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP006",
+      "name": "alu_xor",
+      "description": "ALU operation XOR (0x9): bitwise XOR of alternating patterns",
+      "group": "bitwise",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP007",
+      "name": "alu_shiftl_single_stage",
+      "description": "ALU SHIFTL (0x1): left shift by 4 (single barrel stage via bit 2)",
+      "group": "shift",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP008",
+      "name": "alu_shiftl_multi_stage",
+      "description": "ALU SHIFTL (0x1): left shift by 15 (multi-stage barrel: 1+2+4+8)",
+      "group": "shift",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP009",
+      "name": "alu_shiftr_logical",
+      "description": "ALU SHIFTR (0x2): logical right shift by 3 (multi-stage: 1+2)",
+      "group": "shift",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP010",
+      "name": "alu_shiftr_arith_negative",
+      "description": "ALU SHIFTR_ARITH (0x3): arithmetic right shift of negative number (MSB=1)",
+      "group": "shift",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP011",
+      "name": "alu_shiftr_arith_positive",
+      "description": "ALU SHIFTR_ARITH (0x3): arithmetic right shift of positive number (MSB=0)",
+      "group": "shift",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP012",
+      "name": "alu_less_than_unsigned_true",
+      "description": "ALU LESS_THAN (0xA): unsigned comparison where a < b, result=1",
+      "group": "comparison",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP013",
+      "name": "alu_less_than_unsigned_false",
+      "description": "ALU LESS_THAN (0xA): unsigned comparison where a > b, result=0",
+      "group": "comparison",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP014",
+      "name": "alu_less_than_signed_negative_vs_positive",
+      "description": "ALU LESS_THAN_SIGNED (0xB): signed comparison, negative < positive, result=1",
+      "group": "comparison",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP015",
+      "name": "alu_less_than_signed_positive_vs_negative",
+      "description": "ALU LESS_THAN_SIGNED (0xB): signed comparison, positive > negative, result=0",
+      "group": "comparison",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP016",
+      "name": "alu_add_overflow",
+      "description": "ALU ADD (0x4): addition with 32-bit overflow (0xFFFFFFFF + 1)",
+      "group": "boundary",
+      "priority": "P0",
+      "dimension": "boundary"
+    },
+    {
+      "id": "TP017",
+      "name": "alu_sub_underflow",
+      "description": "ALU SUB (0x6): subtraction causing underflow (0 - 1)",
+      "group": "boundary",
+      "priority": "P0",
+      "dimension": "boundary"
+    },
+    {
+      "id": "TP018",
+      "name": "alu_shiftl_zero_shift",
+      "description": "ALU SHIFTL (0x1): left shift by 0, output equals input",
+      "group": "shift",
+      "priority": "P1",
+      "dimension": "boundary"
+    },
+    {
+      "id": "TP019",
+      "name": "alu_shiftl_max_shift",
+      "description": "ALU SHIFTL (0x1): left shift by 31 (all 5 barrel stages active)",
+      "group": "shift",
+      "priority": "P1",
+      "dimension": "boundary"
+    },
+    {
+      "id": "TP020",
+      "name": "alu_none_zero",
+      "description": "ALU NONE (0x0): passthrough with zero inputs",
+      "group": "boundary",
+      "priority": "P1",
+      "dimension": "boundary"
+    },
+    {
+      "id": "TP021",
+      "name": "alu_add_zero_operands",
+      "description": "ALU ADD (0x4): zero plus zero",
+      "group": "boundary",
+      "priority": "P1",
+      "dimension": "boundary"
+    },
+    {
+      "id": "TP022",
+      "name": "alu_sub_equal_operands",
+      "description": "ALU SUB (0x6): subtraction of equal values, result zero",
+      "group": "boundary",
+      "priority": "P1",
+      "dimension": "boundary"
+    },
+    {
+      "id": "TP023",
+      "name": "alu_and_zero_mask",
+      "description": "ALU AND (0x7): AND with zero mask, result zero",
+      "group": "bitwise",
+      "priority": "P1",
+      "dimension": "boundary"
+    },
+    {
+      "id": "TP024",
+      "name": "alu_or_allones_mask",
+      "description": "ALU OR (0x8): OR with all-ones mask, result all-ones",
+      "group": "bitwise",
+      "priority": "P1",
+      "dimension": "boundary"
+    },
+    {
+      "id": "TP025",
+      "name": "alu_xor_self",
+      "description": "ALU XOR (0x9): XOR with self, result zero",
+      "group": "bitwise",
+      "priority": "P1",
+      "dimension": "boundary"
+    },
+    {
+      "id": "TP026",
+      "name": "alu_add_large_boundary",
+      "description": "ALU ADD (0x4): addition of two large positive numbers near overflow",
+      "group": "boundary",
+      "priority": "P1",
+      "dimension": "boundary"
+    },
+    {
+      "id": "TP027",
+      "name": "alu_less_than_unsigned_max_vs_min",
+      "description": "ALU LESS_THAN (0xA): unsigned max (0xFFFFFFFF) vs min (0x00000000), result false",
+      "group": "comparison",
+      "priority": "P1",
+      "dimension": "boundary"
+    },
+    {
+      "id": "TP028",
+      "name": "alu_less_than_signed_min_vs_max",
+      "description": "ALU LESS_THAN_SIGNED (0xB): INT32_MIN vs INT32_MAX, signed comparison true",
+      "group": "comparison",
+      "priority": "P1",
+      "dimension": "boundary"
+    },
+    {
+      "id": "TP029",
+      "name": "alu_sub_negative_result",
+      "description": "ALU SUB (0x6): subtraction where a < b, result wraps to large unsigned value",
+      "group": "arithmetic",
+      "priority": "P1",
+      "dimension": "edge"
+    },
+    {
+      "id": "TP030",
+      "name": "alu_shiftr_logical_msb_set",
+      "description": "ALU SHIFTR (0x2): logical right shift of value with MSB set, ensures zero-fill",
+      "group": "shift",
+      "priority": "P1",
+      "dimension": "edge"
+    },
+    {
+      "id": "TP031",
+      "name": "alu_default_opcode",
+      "description": "Unrecognized opcode (e.g. 0x5): should fall through to default passthrough",
+      "group": "error_handling",
+      "priority": "P1",
+      "dimension": "negative"
+    },
+    {
+      "id": "TP032",
+      "name": "alu_opcode_high_bits_ignored",
+      "description": "Opcode value with upper bits set (e.g. 0xFF): should be masked or ignored by switch",
+      "group": "error_handling",
+      "priority": "P2",
+      "dimension": "negative"
+    }
+  ]
+}
