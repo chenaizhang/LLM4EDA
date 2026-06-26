@@ -1,5 +1,0 @@
-Import('*')
-
-SimObject('riscv_issue.py', sim_objects=['RiscvIssue'])
-Source('riscv_issue.cc')
-SConscript('riscv_issue_test/SConscript')
