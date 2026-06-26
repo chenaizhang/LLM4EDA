@@ -1,0 +1,19 @@
+{
+  "testpoints": [
+    "TP001: MUL basic positive",
+    "TP002: MUL max * max (low bits)",
+    "TP003: MULH -1 * -1",
+    "TP004: MULH large positive",
+    "TP005: MULHU max unsigned",
+    "TP006: MULHSU signed * unsigned",
+    "TP007: MUL zero operand",
+    "TP008: MUL identity",
+    "TP009: MULH INT32_MIN squared",
+    "TP010: MUL overflow low bits zero",
+    "TP011: MUL with hold behavior",
+    "TP012: MULHU large values",
+    "TP013: MUL random values",
+    "TP014: Invalid funct3 handling",
+    "TP015: MULHSU negative * max unsigned"
+  ]
+}

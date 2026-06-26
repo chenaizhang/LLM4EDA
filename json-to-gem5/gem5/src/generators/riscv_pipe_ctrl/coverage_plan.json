@@ -1,0 +1,39 @@
+{
+  "coverage_plan": [
+    {
+      "feature": "Normal pipeline flow (Issue->E1->E2->WB)",
+      "covered_by": ["PIPE_TP001"],
+      "status": "covered"
+    },
+    {
+      "feature": "Instruction type decoding (load, store, mul, branch, CSR)",
+      "covered_by": ["PIPE_TP002", "PIPE_TP003", "PIPE_TP004", "PIPE_TP005", "PIPE_TP010"],
+      "status": "covered"
+    },
+    {
+      "feature": "Branch handling (taken vs not taken)",
+      "covered_by": ["PIPE_TP005", "PIPE_TP006"],
+      "status": "covered"
+    },
+    {
+      "feature": "Pipeline stall conditions",
+      "covered_by": ["PIPE_TP007", "PIPE_TP012"],
+      "status": "covered"
+    },
+    {
+      "feature": "Pipeline flush/squash",
+      "covered_by": ["PIPE_TP006", "PIPE_TP008", "PIPE_TP009"],
+      "status": "covered"
+    },
+    {
+      "feature": "Interrupt handling",
+      "covered_by": ["PIPE_TP009"],
+      "status": "covered"
+    },
+    {
+      "feature": "Writeback stage override (LSU, mul, div, CSR)",
+      "covered_by": ["PIPE_TP011", "PIPE_TP013", "PIPE_TP014", "PIPE_TP015"],
+      "status": "covered"
+    }
+  ]
+}

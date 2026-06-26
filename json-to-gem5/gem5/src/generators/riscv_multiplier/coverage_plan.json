@@ -1,0 +1,39 @@
+{
+  "coverage_plan": [
+    {
+      "feature": "MUL instruction (low 32 bits)",
+      "covered_by": ["MUL_TP001", "MUL_TP002", "MUL_TP007", "MUL_TP008", "MUL_TP010", "MUL_TP013"],
+      "status": "covered"
+    },
+    {
+      "feature": "MULH instruction (signed high 32 bits)",
+      "covered_by": ["MUL_TP003", "MUL_TP004", "MUL_TP009"],
+      "status": "covered"
+    },
+    {
+      "feature": "MULHU instruction (unsigned high 32 bits)",
+      "covered_by": ["MUL_TP005", "MUL_TP012"],
+      "status": "covered"
+    },
+    {
+      "feature": "MULHSU instruction (signed*unsigned high 32 bits)",
+      "covered_by": ["MUL_TP006", "MUL_TP015"],
+      "status": "covered"
+    },
+    {
+      "feature": "Hold behavior during computation",
+      "covered_by": ["MUL_TP011"],
+      "status": "covered"
+    },
+    {
+      "feature": "Invalid opcode handling",
+      "covered_by": ["MUL_TP014"],
+      "status": "covered"
+    },
+    {
+      "feature": "Multi-cycle computation (32 iterations)",
+      "covered_by": ["MUL_TP001", "MUL_TP002", "MUL_TP003"],
+      "status": "covered"
+    }
+  ]
+}

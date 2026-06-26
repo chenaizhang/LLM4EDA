@@ -1,0 +1,19 @@
+{
+  "testpoints": [
+    "TP001: Normal instruction pipeline flow",
+    "TP002: LSU load instruction",
+    "TP003: LSU store instruction",
+    "TP004: Multiply instruction",
+    "TP005: Branch not taken",
+    "TP006: Branch taken with squash",
+    "TP007: Issue stage stall",
+    "TP008: External squash",
+    "TP009: Interrupt taken",
+    "TP010: CSR instruction",
+    "TP011: Writeback squash",
+    "TP012: E2 load stall hazard",
+    "TP013: Memory completion override",
+    "TP014: Divider result override",
+    "TP015: CSR E1 result passthrough"
+  ]
+}

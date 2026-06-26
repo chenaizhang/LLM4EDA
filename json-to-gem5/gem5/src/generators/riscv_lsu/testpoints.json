@@ -1,0 +1,164 @@
+{
+  "testpoints": [
+    {
+      "id": "TP001",
+      "name": "reset_state_defaults",
+      "description": "After reset, all outputs should be at default zero values, stall=0, IDLE state",
+      "group": "reset",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP002",
+      "name": "lw_same_cycle_response",
+      "description": "Load word with memory accepting and responding in same cycle, writeback data returned",
+      "group": "basic_load",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP003",
+      "name": "sw_same_cycle_response",
+      "description": "Store word with memory accepting and responding in same cycle, memory write signals asserted",
+      "group": "basic_store",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP004",
+      "name": "lb_sign_extend",
+      "description": "Load byte with sign extension: data byte 0xFE sign-extended to 0xFFFFFFFE",
+      "group": "load_variant",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP005",
+      "name": "sb_byte_store",
+      "description": "Store byte replicates byte value across all byte lanes",
+      "group": "store_variant",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP006",
+      "name": "lh_halfword_load",
+      "description": "Load halfword with sign extension from memory",
+      "group": "load_variant",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP007",
+      "name": "lbu_unsigned_byte",
+      "description": "Load byte unsigned: byte value 0x80 returned as 0x00000080 (no sign extension)",
+      "group": "load_variant",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP008",
+      "name": "lhu_unsigned_halfword",
+      "description": "Load halfword unsigned: halfword value 0x8000 returned as 0x00008000",
+      "group": "load_variant",
+      "priority": "P0",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP009",
+      "name": "lw_alignment_error",
+      "description": "Word load from misaligned address (addr=3) triggers alignment exception code 4",
+      "group": "error_handling",
+      "priority": "P0",
+      "dimension": "negative"
+    },
+    {
+      "id": "TP010",
+      "name": "sh_alignment_error",
+      "description": "Halfword store to unaligned address (addr=1) triggers alignment exception code 6",
+      "group": "error_handling",
+      "priority": "P0",
+      "dimension": "negative"
+    },
+    {
+      "id": "TP011",
+      "name": "load_page_fault",
+      "description": "Memory load fault signal asserted during load response causes page fault exception code 13",
+      "group": "fault_handling",
+      "priority": "P0",
+      "dimension": "negative"
+    },
+    {
+      "id": "TP012",
+      "name": "store_page_fault",
+      "description": "Memory store fault signal asserted during store response causes page fault exception code 15",
+      "group": "fault_handling",
+      "priority": "P0",
+      "dimension": "negative"
+    },
+    {
+      "id": "TP013",
+      "name": "memory_error_on_load",
+      "description": "Memory error signal during load response triggers access fault exception code 5",
+      "group": "fault_handling",
+      "priority": "P0",
+      "dimension": "negative"
+    },
+    {
+      "id": "TP014",
+      "name": "illegal_instruction",
+      "description": "Opcode invalid signal asserted causes illegal instruction exception (code 2)",
+      "group": "error_handling",
+      "priority": "P0",
+      "dimension": "negative"
+    },
+    {
+      "id": "TP015",
+      "name": "lw_zero_data",
+      "description": "Load word returning zero data verifies writeback path with zero value",
+      "group": "basic_load",
+      "priority": "P1",
+      "dimension": "boundary"
+    },
+    {
+      "id": "TP016",
+      "name": "lw_state_machine_accept_wait",
+      "description": "Load request without immediate accept: state transitions IDLE->ACCEPT->WAIT_RESP across cycles",
+      "group": "state_machine",
+      "priority": "P1",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP017",
+      "name": "lw_state_machine_response",
+      "description": "After ACCEPT state, memory accept arrives and transitions to WAIT_RESP, then response completes",
+      "group": "state_machine",
+      "priority": "P1",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP018",
+      "name": "fifo_multiple_requests",
+      "description": "Multiple requests queued while first request is in flight: FIFO stores them correctly",
+      "group": "fifo",
+      "priority": "P1",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP019",
+      "name": "tag_counter_increment",
+      "description": "Request tag counter increments with each issued request, tags are unique",
+      "group": "internal_state",
+      "priority": "P1",
+      "dimension": "positive"
+    },
+    {
+      "id": "TP020",
+      "name": "store_memory_error",
+      "description": "Memory error on store response triggers access fault (exception code 7)",
+      "group": "fault_handling",
+      "priority": "P1",
+      "dimension": "negative"
+    }
+  ]
+}

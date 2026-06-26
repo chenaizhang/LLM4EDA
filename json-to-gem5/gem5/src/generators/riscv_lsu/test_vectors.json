@@ -1,0 +1,255 @@
+{
+  "module_type": "sequential",
+  "test_vectors": [
+    {
+      "id": "TP001",
+      "desc": "Reset state: all outputs at default zero, IDLE state, no stall",
+      "inputs": {},
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP002",
+      "desc": "LW x1, 0(x0): load word from addr=0x1000 with same-cycle memory accept+response, writeback data=0x12345678",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 131203,
+        "setOpcodeRaOperandI": 4096,
+        "setMemAcceptI": 1,
+        "setMemAckI": 1,
+        "setMemRespTagI": 0,
+        "setMemDataRdI": 305419896
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP003",
+      "desc": "SW x2, 0(x1): store word to addr=0x2000 with data=0xA5A5A5A5",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 2129955,
+        "setOpcodeRaOperandI": 8192,
+        "setOpcodeRbOperandI": 2779096485,
+        "setMemAcceptI": 1,
+        "setMemAckI": 1,
+        "setMemRespTagI": 0
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP004",
+      "desc": "LB x0, 0(x0): load byte from memory data=0xFE, sign-extended to 0xFFFFFFFE",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 3,
+        "setOpcodeRaOperandI": 4096,
+        "setMemAcceptI": 1,
+        "setMemAckI": 1,
+        "setMemRespTagI": 0,
+        "setMemDataRdI": 254
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP005",
+      "desc": "SB x4, 0(x3): store byte with data value 0x5A, memory write data replicated across byte lanes",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 4325404,
+        "setOpcodeRaOperandI": 8192,
+        "setOpcodeRbOperandI": 90,
+        "setMemAcceptI": 1,
+        "setMemAckI": 1,
+        "setMemRespTagI": 0
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP006",
+      "desc": "LH x0, 0(x0): load halfword from memory data=0xFFFE, sign-extended to 0xFFFFFFFE",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 4099,
+        "setOpcodeRaOperandI": 4096,
+        "setMemAcceptI": 1,
+        "setMemAckI": 1,
+        "setMemRespTagI": 0,
+        "setMemDataRdI": 65534
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP007",
+      "desc": "LBU x0, 0(x0): load byte unsigned from memory data=0x80, result=0x00000080 (no sign extension)",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 16387,
+        "setOpcodeRaOperandI": 4096,
+        "setMemAcceptI": 1,
+        "setMemAckI": 1,
+        "setMemRespTagI": 0,
+        "setMemDataRdI": 128
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP008",
+      "desc": "LHU x0, 0(x0): load halfword unsigned from memory data=0x8000, result=0x00008000",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 20483,
+        "setOpcodeRaOperandI": 4096,
+        "setMemAcceptI": 1,
+        "setMemAckI": 1,
+        "setMemRespTagI": 0,
+        "setMemDataRdI": 32768
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP009",
+      "desc": "LW from misaligned addr=3: writeback exception code 4 (LOAD_ADDR_MISALIGN), no memory request issued",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 131203,
+        "setOpcodeRaOperandI": 3
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP010",
+      "desc": "SH to misaligned addr=1: writeback exception code 6 (STORE_ADDR_MISALIGN), no memory request issued",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 4129,
+        "setOpcodeRaOperandI": 1,
+        "setOpcodeRbOperandI": 100
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP011",
+      "desc": "LW with mem_load_fault=1: writeback exception code 13 (LOAD_PAGE_FAULT)",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 131203,
+        "setOpcodeRaOperandI": 4096,
+        "setMemAcceptI": 1,
+        "setMemAckI": 1,
+        "setMemRespTagI": 0,
+        "setMemLoadFaultI": 1
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP012",
+      "desc": "SW with mem_store_fault=1: writeback exception code 15 (STORE_PAGE_FAULT)",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 2129955,
+        "setOpcodeRaOperandI": 8192,
+        "setOpcodeRbOperandI": 100,
+        "setMemAcceptI": 1,
+        "setMemAckI": 1,
+        "setMemRespTagI": 0,
+        "setMemStoreFaultI": 1
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP013",
+      "desc": "LW with mem_error=1: writeback exception code 5 (LOAD_ACCESS_FAULT)",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 131203,
+        "setOpcodeRaOperandI": 4096,
+        "setMemAcceptI": 1,
+        "setMemAckI": 1,
+        "setMemRespTagI": 0,
+        "setMemErrorI": 1
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP014",
+      "desc": "Opcode invalid (illegal instruction): writeback exception code 2, writeback_valid asserted",
+      "inputs": {
+        "setOpcodeInvalidI": 1
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP015",
+      "desc": "LW with zero data returned: writeback_value=0, writeback_valid=1",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 131203,
+        "setOpcodeRaOperandI": 4096,
+        "setMemAcceptI": 1,
+        "setMemAckI": 1,
+        "setMemRespTagI": 0,
+        "setMemDataRdI": 0
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP016",
+      "desc": "LW request without immediate mem_accept: state transitions to ACCEPT, stall asserted, memory request issued",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 131203,
+        "setOpcodeRaOperandI": 4096
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP017",
+      "desc": "Memory accepts and responds: state transitions ACCEPT->WAIT_RESP->IDLE, writeback data=0xDEADBEEF",
+      "inputs": {
+        "setMemAcceptI": 1,
+        "setMemAckI": 1,
+        "setMemRespTagI": 0,
+        "setMemDataRdI": 3735928559
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP018",
+      "desc": "SW with misaligned address on FIFO push: alignment error detected during FIFO writeback",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 2129955,
+        "setOpcodeRaOperandI": 3,
+        "setOpcodeRbOperandI": 100
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP019",
+      "desc": "LW large address: address 0xFFFFF000 verified on mem_addr_o output",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 131203,
+        "setOpcodeRaOperandI": 4294963200,
+        "setMemAcceptI": 1,
+        "setMemAckI": 1,
+        "setMemRespTagI": 0
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "TP020",
+      "desc": "SW with mem_error=1: writeback exception code 7 (STORE_ACCESS_FAULT)",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 2129955,
+        "setOpcodeRaOperandI": 8192,
+        "setOpcodeRbOperandI": 100,
+        "setMemAcceptI": 1,
+        "setMemAckI": 1,
+        "setMemRespTagI": 0,
+        "setMemErrorI": 1
+      },
+      "wait_cycles": 1
+    }
+  ]
+}

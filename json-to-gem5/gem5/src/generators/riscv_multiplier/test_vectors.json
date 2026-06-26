@@ -1,0 +1,170 @@
+{
+  "module_type": "sequential",
+  "test_vectors": [
+    {
+      "id": "MUL_TP001",
+      "desc": "MUL: 10 * 3 = 30 (low 32 bits, funct3=0)",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 51,
+        "setOpcodeRaOperandI": 10,
+        "setOpcodeRbOperandI": 3
+      },
+      "wait_cycles": 35
+    },
+    {
+      "id": "MUL_TP002",
+      "desc": "MUL: 0xFFFFFFFF * 0xFFFFFFFF = 1 (low 32 bits)",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 51,
+        "setOpcodeRaOperandI": 4294967295,
+        "setOpcodeRbOperandI": 4294967295
+      },
+      "wait_cycles": 35
+    },
+    {
+      "id": "MUL_TP003",
+      "desc": "MULH: signed -1 * -1 = 0 (high 32 bits of 1 = 0)",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 4147,
+        "setOpcodeRaOperandI": 4294967295,
+        "setOpcodeRbOperandI": 4294967295
+      },
+      "wait_cycles": 35
+    },
+    {
+      "id": "MUL_TP004",
+      "desc": "MULH: signed 0x7FFFFFFF * 0x7FFFFFFF = 0x3FFFFFFF (high bits)",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 4147,
+        "setOpcodeRaOperandI": 2147483647,
+        "setOpcodeRbOperandI": 2147483647
+      },
+      "wait_cycles": 35
+    },
+    {
+      "id": "MUL_TP005",
+      "desc": "MULHU: unsigned 0xFFFFFFFF * 0xFFFFFFFF = 0xFFFFFFFE (high bits)",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 8243,
+        "setOpcodeRaOperandI": 4294967295,
+        "setOpcodeRbOperandI": 4294967295
+      },
+      "wait_cycles": 35
+    },
+    {
+      "id": "MUL_TP006",
+      "desc": "MULHSU: signed -1 * unsigned 0xFFFFFFFF = 0 (high bits with correction)",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 6195,
+        "setOpcodeRaOperandI": 4294967295,
+        "setOpcodeRbOperandI": 4294967295
+      },
+      "wait_cycles": 35
+    },
+    {
+      "id": "MUL_TP007",
+      "desc": "MUL: 0 * 5 = 0",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 51,
+        "setOpcodeRaOperandI": 0,
+        "setOpcodeRbOperandI": 5
+      },
+      "wait_cycles": 35
+    },
+    {
+      "id": "MUL_TP008",
+      "desc": "MUL: 1 * 1 = 1",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 51,
+        "setOpcodeRaOperandI": 1,
+        "setOpcodeRbOperandI": 1
+      },
+      "wait_cycles": 35
+    },
+    {
+      "id": "MUL_TP009",
+      "desc": "MULH: INT32_MIN * INT32_MIN = 0x40000000 (signed high)",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 4147,
+        "setOpcodeRaOperandI": 2147483648,
+        "setOpcodeRbOperandI": 2147483648
+      },
+      "wait_cycles": 35
+    },
+    {
+      "id": "MUL_TP010",
+      "desc": "MUL: 0x10000 * 0x10000 = 0 (low 32 bits of 0x100000000)",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 51,
+        "setOpcodeRaOperandI": 65536,
+        "setOpcodeRbOperandI": 65536
+      },
+      "wait_cycles": 35
+    },
+    {
+      "id": "MUL_TP011",
+      "desc": "MUL with hold asserted during computation, then released",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 51,
+        "setOpcodeRaOperandI": 5,
+        "setOpcodeRbOperandI": 3
+      },
+      "wait_cycles": 35
+    },
+    {
+      "id": "MUL_TP012",
+      "desc": "MULHU: 0x80000000 * 0x80000000 = 0x40000000 (unsigned high)",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 8243,
+        "setOpcodeRaOperandI": 2147483648,
+        "setOpcodeRbOperandI": 2147483648
+      },
+      "wait_cycles": 35
+    },
+    {
+      "id": "MUL_TP013",
+      "desc": "MUL: 12345 * 6789 = 83810205",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 51,
+        "setOpcodeRaOperandI": 12345,
+        "setOpcodeRbOperandI": 6789
+      },
+      "wait_cycles": 35
+    },
+    {
+      "id": "MUL_TP014",
+      "desc": "Invalid opcode (funct3=4) should stay IDLE, output unchanged",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 10291,
+        "setOpcodeRaOperandI": 10,
+        "setOpcodeRbOperandI": 3
+      },
+      "wait_cycles": 35
+    },
+    {
+      "id": "MUL_TP015",
+      "desc": "MULHSU: signed 0x80000000 * unsigned 0xFFFFFFFF (negative * max unsigned)",
+      "inputs": {
+        "setOpcodeValidI": 1,
+        "setOpcodeOpcodeI": 6195,
+        "setOpcodeRaOperandI": 2147483648,
+        "setOpcodeRbOperandI": 4294967295
+      },
+      "wait_cycles": 35
+    }
+  ]
+}

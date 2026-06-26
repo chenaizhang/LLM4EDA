@@ -1,0 +1,5 @@
+Import('*')
+
+SimObject('riscv_multiplier.py', sim_objects=['RiscvMultiplier'])
+Source('riscv_multiplier.cc')
+SConscript('riscv_multiplier_test/SConscript')

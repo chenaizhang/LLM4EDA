@@ -1,0 +1,5 @@
+Import('*')
+
+SimObject('riscv_lsu.py', sim_objects=['RiscvLsu'])
+Source('riscv_lsu.cc')
+SConscript('riscv_lsu_test/SConscript')

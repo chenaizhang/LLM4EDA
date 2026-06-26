@@ -1,0 +1,248 @@
+{
+  "module_type": "sequential",
+  "test_vectors": [
+    {
+      "id": "ISSUE_TP001",
+      "desc": "Dispatch ALU/exec instruction (ADD x5, x1, x2): exec_opcode_valid=1, generic bus has opcode/operands",
+      "inputs": {
+        "setFetchValidI": 1,
+        "setFetchInstrI": 131139,
+        "setFetchPcI": 2147483648,
+        "setFetchInstrExecI": 1,
+        "setFetchInstrRdValidI": 1,
+        "setOpcodeRaOperandI": 10,
+        "setOpcodeRbOperandI": 20
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP002",
+      "desc": "Dispatch LSU load instruction: lsu_opcode_valid=1, LSU bus populated with opcode/operands",
+      "inputs": {
+        "setFetchValidI": 1,
+        "setFetchInstrI": 3,
+        "setFetchPcI": 2147483652,
+        "setFetchInstrLsuI": 1,
+        "setFetchInstrRdValidI": 1,
+        "setOpcodeRaOperandI": 100,
+        "setOpcodeRbOperandI": 0
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP003",
+      "desc": "Dispatch CSR instruction: csr_opcode_valid=1, CSR bus populated",
+      "inputs": {
+        "setFetchValidI": 1,
+        "setFetchInstrI": 115,
+        "setFetchPcI": 2147483656,
+        "setFetchInstrCsrI": 1
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP004",
+      "desc": "Dispatch multiply instruction: mul_opcode_valid=1, MUL bus populated, mul_in_flight set",
+      "inputs": {
+        "setFetchValidI": 1,
+        "setFetchInstrI": 51,
+        "setFetchPcI": 2147483660,
+        "setFetchInstrMulI": 1,
+        "setFetchInstrRdValidI": 1,
+        "setOpcodeRaOperandI": 7,
+        "setOpcodeRbOperandI": 3
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP005",
+      "desc": "Dispatch divide instruction: div_opcode_valid=1, div_in_flight set",
+      "inputs": {
+        "setFetchValidI": 1,
+        "setFetchInstrI": 51,
+        "setFetchPcI": 2147483664,
+        "setFetchInstrDivI": 1,
+        "setFetchInstrRdValidI": 1
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP006",
+      "desc": "Exec hold stall: exec_in_flight from previous dispatch, fetch_accept=0 prevents new dispatch",
+      "inputs": {
+        "setFetchValidI": 1,
+        "setFetchInstrI": 131139,
+        "setFetchPcI": 2147483668,
+        "setFetchInstrExecI": 1
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP007",
+      "desc": "LSU stall backpressure: lsu_stall=1, fetch_accept=0, pipeline stalled",
+      "inputs": {
+        "setFetchValidI": 1,
+        "setFetchInstrI": 131139,
+        "setFetchPcI": 2147483672,
+        "setFetchInstrExecI": 1,
+        "setLsuStallI": 1
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP008",
+      "desc": "Interrupt taken: take_interrupt=1, fetch_accept=0, interrupt_inhibit_reg set",
+      "inputs": {
+        "setFetchValidI": 1,
+        "setFetchInstrI": 131139,
+        "setFetchPcI": 2147483676,
+        "setTakeInterruptI": 1
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP009",
+      "desc": "Branch exec forwarding: exec branch request forwarded to fetch, branch_request=1",
+      "inputs": {
+        "setBranchExecRequestI": 1,
+        "setBranchExecPcI": 2147484160,
+        "setBranchExecSourceI": 0
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP010",
+      "desc": "Branch CSR forwarding: CSR branch forwarded to fetch (branch_request from CSR)",
+      "inputs": {
+        "setBranchCsrRequestI": 1,
+        "setBranchCsrPcI": 2147484672,
+        "setBranchCsrPrivI": 3
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP011",
+      "desc": "Exec writeback merge: exec_in_flight=1, writeback_exec_value written to regfile (highest priority)",
+      "inputs": {
+        "setWritebackExecValueI": 42
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP012",
+      "desc": "Memory writeback merge: writeback_mem_valid=1, mem value written to regfile",
+      "inputs": {
+        "setWritebackMemValidI": 1,
+        "setWritebackMemValueI": 255
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP013",
+      "desc": "Multiply writeback merge: mul_in_flight=1, mul value written to regfile",
+      "inputs": {
+        "setWritebackMulValueI": 21
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP014",
+      "desc": "Divide writeback merge: writeback_div_valid=1, div value written to regfile (lowest priority)",
+      "inputs": {
+        "setWritebackDivValidI": 1,
+        "setWritebackDivValueI": 7
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP015",
+      "desc": "Bypass from exec: rs1 matches exec_rd_idx, forwarded writeback_exec_value used instead of regfile value",
+      "inputs": {
+        "setFetchValidI": 1,
+        "setFetchInstrI": 131139,
+        "setFetchPcI": 2147483680,
+        "setFetchInstrExecI": 1,
+        "setFetchInstrRdValidI": 1,
+        "setWritebackExecValueI": 99
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP016",
+      "desc": "Bypass from mem: rs2 matches mem_rd_idx_reg, forwarded writeback_mem_value used",
+      "inputs": {
+        "setFetchValidI": 1,
+        "setFetchInstrI": 131139,
+        "setFetchPcI": 2147483684,
+        "setFetchInstrExecI": 1,
+        "setFetchInstrRdValidI": 1,
+        "setWritebackMemValidI": 1,
+        "setWritebackMemValueI": 200
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP017",
+      "desc": "Bypass from mul: rs1 matches mul_rd_idx_reg, forwarded writeback_mul_value used",
+      "inputs": {
+        "setFetchValidI": 1,
+        "setFetchInstrI": 131139,
+        "setFetchPcI": 2147483688,
+        "setFetchInstrExecI": 1,
+        "setFetchInstrRdValidI": 1,
+        "setWritebackMulValueI": 55
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP018",
+      "desc": "Fetch fault: fetch_fault_fetch=1, regfile not read, opcode_invalid set on output",
+      "inputs": {
+        "setFetchValidI": 1,
+        "setFetchInstrI": 131139,
+        "setFetchPcI": 2147483692,
+        "setFetchFaultFetchI": 1,
+        "setFetchInstrExecI": 1
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP019",
+      "desc": "CSR writeback output: csr_result_e1_write=1, exception and wdata forwarded to csr_writeback outputs",
+      "inputs": {
+        "setCsrResultE1WriteI": 1,
+        "setCsrResultE1WdataI": 4096,
+        "setCsrResultE1ExceptionI": 0,
+        "setCsrResultE1ValueI": 305419896
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP020",
+      "desc": "Mul hold stall: mul_in_flight=1, mul_hold_o=1, blocks new dispatch but other units unaffected",
+      "inputs": {
+        "setFetchValidI": 1,
+        "setFetchInstrI": 131139,
+        "setFetchPcI": 2147483696,
+        "setFetchInstrExecI": 1
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP021",
+      "desc": "Interrupt inhibit cleared: after no valid instr and no branch, inhibit reg resets to 0",
+      "inputs": {
+        "setFetchValidI": 0
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "ISSUE_TP022",
+      "desc": "No valid instruction: regfile.process() still called with ra0/rb0=0 for writeback completion",
+      "inputs": {
+        "setFetchValidI": 0
+      },
+      "wait_cycles": 1
+    }
+  ]
+}

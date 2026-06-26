@@ -1,0 +1,5 @@
+Import('*')
+
+SimObject('riscv_mmu.py', sim_objects=['RiscvMmu'])
+Source('riscv_mmu.cc')
+SConscript('riscv_mmu_test/SConscript')
