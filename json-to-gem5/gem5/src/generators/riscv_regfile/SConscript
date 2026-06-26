@@ -1,0 +1,5 @@
+Import('*')
+
+SimObject('riscv_regfile.py', sim_objects=['RiscvRegfile'])
+Source('riscv_regfile.cc')
+SConscript('riscv_regfile_test/SConscript')

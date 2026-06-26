@@ -1,0 +1,144 @@
+{
+  "module_type": "sequential",
+  "test_vectors": [
+    {
+      "id": "RAM_TP001",
+      "desc": "Write 0xAABBCCDD to address 0, read from port A and B",
+      "inputs": {
+        "setRd0I": 0,
+        "setRd0ValueI": 2864434397,
+        "setRaI": 0,
+        "setRbI": 0
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RAM_TP002",
+      "desc": "Write 0x12345678 to address 5, read from port A",
+      "inputs": {
+        "setRd0I": 5,
+        "setRd0ValueI": 305419896,
+        "setRaI": 5,
+        "setRbI": 0
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RAM_TP003",
+      "desc": "Write 0xDEADBEEF to address 15, read from both ports",
+      "inputs": {
+        "setRd0I": 15,
+        "setRd0ValueI": 3735928559,
+        "setRaI": 15,
+        "setRbI": 15
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RAM_TP004",
+      "desc": "Read-before-write: write 0x55555555 to address 3, same cycle read should show old value",
+      "inputs": {
+        "setRd0I": 3,
+        "setRd0ValueI": 1431655765,
+        "setRaI": 3,
+        "setRbI": 3
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RAM_TP005",
+      "desc": "Verify write persisted: read address 3 from previous test",
+      "inputs": {
+        "setRaI": 3,
+        "setRbI": 3
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RAM_TP006",
+      "desc": "Read port A and B from different addresses (A=2, B=5)",
+      "inputs": {
+        "setRaI": 2,
+        "setRbI": 5
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RAM_TP007",
+      "desc": "Write 0xFFFFFFFF to address 10, read back",
+      "inputs": {
+        "setRd0I": 10,
+        "setRd0ValueI": 4294967295,
+        "setRaI": 10,
+        "setRbI": 10
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RAM_TP008",
+      "desc": "Multiple writes to same address (7): write A then B, verify B persisted",
+      "inputs": {
+        "setRd0I": 7,
+        "setRd0ValueI": 1431655765,
+        "setRaI": 7,
+        "setRbI": 7
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RAM_TP009",
+      "desc": "Second write to address 7 with different value, verify new value",
+      "inputs": {
+        "setRd0I": 7,
+        "setRd0ValueI": 305419896,
+        "setRaI": 7,
+        "setRbI": 7
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RAM_TP010",
+      "desc": "Write alternating pattern 0xAAAAAAAA to address 12, read back",
+      "inputs": {
+        "setRd0I": 12,
+        "setRd0ValueI": 2863311530,
+        "setRaI": 12,
+        "setRbI": 12
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RAM_TP011",
+      "desc": "Test address wrapping: write to address 16 (masked to 0), check address 0",
+      "inputs": {
+        "setRd0I": 16,
+        "setRd0ValueI": 3735928559,
+        "setRaI": 0,
+        "setRbI": 16
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RAM_TP012",
+      "desc": "Test address wrapping: write to address 31 (masked to 15), check address 15",
+      "inputs": {
+        "setRd0I": 31,
+        "setRd0ValueI": 305419896,
+        "setRaI": 15,
+        "setRbI": 31
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RAM_TP013",
+      "desc": "Write zero to address 8, read back both ports",
+      "inputs": {
+        "setRd0I": 8,
+        "setRd0ValueI": 0,
+        "setRaI": 8,
+        "setRbI": 8
+      },
+      "wait_cycles": 1
+    }
+  ]
+}

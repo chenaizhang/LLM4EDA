@@ -1,0 +1,75 @@
+{
+  "module_type": "combinational",
+  "test_vectors": [
+    {
+      "id": "TRC_TP001",
+      "desc": "Trace a single instruction with valid set",
+      "inputs": {
+        "setValidI": 1,
+        "setPcI": 2147483680,
+        "setOpcodeI": 51
+      },
+      "expected": {}
+    },
+    {
+      "id": "TRC_TP002",
+      "desc": "Trace instruction with invalid (valid=0) - no logging",
+      "inputs": {
+        "setValidI": 0,
+        "setPcI": 2147483684,
+        "setOpcodeI": 19
+      },
+      "expected": {}
+    },
+    {
+      "id": "TRC_TP003",
+      "desc": "Trace multiple instructions: first instruction",
+      "inputs": {
+        "setValidI": 1,
+        "setPcI": 2147483648,
+        "setOpcodeI": 55
+      },
+      "expected": {}
+    },
+    {
+      "id": "TRC_TP004",
+      "desc": "Trace multiple instructions: second instruction",
+      "inputs": {
+        "setValidI": 1,
+        "setPcI": 2147483652,
+        "setOpcodeI": 115
+      },
+      "expected": {}
+    },
+    {
+      "id": "TRC_TP005",
+      "desc": "Trace instruction with max opcode value",
+      "inputs": {
+        "setValidI": 1,
+        "setPcI": 2147483904,
+        "setOpcodeI": 4294967295
+      },
+      "expected": {}
+    },
+    {
+      "id": "TRC_TP006",
+      "desc": "Trace with zero PC and opcode",
+      "inputs": {
+        "setValidI": 1,
+        "setPcI": 0,
+        "setOpcodeI": 0
+      },
+      "expected": {}
+    },
+    {
+      "id": "TRC_TP007",
+      "desc": "Alternate valid/invalid: valid is set",
+      "inputs": {
+        "setValidI": 1,
+        "setPcI": 2147484160,
+        "setOpcodeI": 4294967295
+      },
+      "expected": {}
+    }
+  ]
+}

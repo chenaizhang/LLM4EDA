@@ -1,0 +1,29 @@
+{
+  "coverage_plan": [
+    {
+      "feature": "Instruction tracing with valid signal",
+      "covered_by": ["TRC_TP001", "TRC_TP003", "TRC_TP004"],
+      "status": "covered"
+    },
+    {
+      "feature": "No tracing when valid=0",
+      "covered_by": ["TRC_TP002"],
+      "status": "covered"
+    },
+    {
+      "feature": "Boundary opcode values",
+      "covered_by": ["TRC_TP005", "TRC_TP006"],
+      "status": "covered"
+    },
+    {
+      "feature": "Sequential instruction tracing",
+      "covered_by": ["TRC_TP003", "TRC_TP004"],
+      "status": "covered"
+    },
+    {
+      "feature": "Valid signal toggling",
+      "covered_by": ["TRC_TP007"],
+      "status": "covered"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+Import('*')
+
+SimObject('RiscvXilinx2r1w.py', sim_objects=['RiscvXilinx2r1w'])
+Source('riscv_xilinx_2r1w.cc')
+SConscript('riscv_xilinx_2r1w_test/SConscript')

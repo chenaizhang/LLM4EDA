@@ -1,0 +1,17 @@
+{
+  "testpoints": [
+    "TP001: Write to address 0, read port A and B",
+    "TP002: Write to address 5, read port A",
+    "TP003: Write to address 15 (max), read both ports",
+    "TP004: Read-before-write semantics",
+    "TP005: Verify write persistence",
+    "TP006: Different addresses on port A and B",
+    "TP007: Write max value (0xFFFFFFFF)",
+    "TP008: Multiple writes to same address (first)",
+    "TP009: Multiple writes to same address (second)",
+    "TP010: Alternating bit pattern (0xAAAAAAAA)",
+    "TP011: Address wrapping (16 -> 0)",
+    "TP012: Address wrapping (31 -> 15)",
+    "TP013: Write zero"
+  ]
+}

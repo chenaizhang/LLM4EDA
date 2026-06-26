@@ -1,0 +1,34 @@
+{
+  "coverage_plan": [
+    {
+      "feature": "Register write and read",
+      "covered_by": ["RF_TP001", "RF_TP002", "RF_TP005", "RF_TP008", "RF_TP013", "RF_TP014"],
+      "status": "covered"
+    },
+    {
+      "feature": "x0 hardwired to zero",
+      "covered_by": ["RF_TP003", "RF_TP004"],
+      "status": "covered"
+    },
+    {
+      "feature": "Dual-port read (A and B simultaneously)",
+      "covered_by": ["RF_TP002", "RF_TP006", "RF_TP011"],
+      "status": "covered"
+    },
+    {
+      "feature": "Read-after-write forwarding",
+      "covered_by": ["RF_TP007", "RF_TP012"],
+      "status": "covered"
+    },
+    {
+      "feature": "Multiple writes to same register",
+      "covered_by": ["RF_TP009", "RF_TP010"],
+      "status": "covered"
+    },
+    {
+      "feature": "Different source for port A and B",
+      "covered_by": ["RF_TP006", "RF_TP011"],
+      "status": "covered"
+    }
+  ]
+}

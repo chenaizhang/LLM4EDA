@@ -1,0 +1,6 @@
+Import('*')
+
+SimObject('riscv_trace_sim.py', sim_objects=['RiscvTraceSim'])
+Source('riscv_trace_sim.cc')
+SConscript('riscv_trace_sim_test/SConscript')
+DebugFlag('RiscvTraceSim')

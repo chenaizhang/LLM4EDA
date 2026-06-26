@@ -1,0 +1,18 @@
+{
+  "testpoints": [
+    "TP001: Write x1, read back",
+    "TP002: Write x5, read both ports",
+    "TP003: Read x0 returns 0",
+    "TP004: Write to x0 ignored",
+    "TP005: Write x10 with max pattern",
+    "TP006: Different source regs for port A and B",
+    "TP007: Read-after-write forwarding",
+    "TP008: Write x31 (last register)",
+    "TP009: Multiple writes to same register (first)",
+    "TP010: Multiple writes to same register (second)",
+    "TP011: Read two different pre-written registers",
+    "TP012: Forwarding with both ports same cycle",
+    "TP013: Write x20 with pattern",
+    "TP014: Verify read persistence"
+  ]
+}

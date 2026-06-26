@@ -1,0 +1,39 @@
+{
+  "coverage_plan": [
+    {
+      "feature": "Write to memory and read back from both ports",
+      "covered_by": ["RAM_TP001", "RAM_TP002", "RAM_TP003"],
+      "status": "covered"
+    },
+    {
+      "feature": "Read-before-write semantics",
+      "covered_by": ["RAM_TP004", "RAM_TP005"],
+      "status": "covered"
+    },
+    {
+      "feature": "Independent read ports (A and B)",
+      "covered_by": ["RAM_TP001", "RAM_TP006"],
+      "status": "covered"
+    },
+    {
+      "feature": "Maximum data value",
+      "covered_by": ["RAM_TP007"],
+      "status": "covered"
+    },
+    {
+      "feature": "Multiple writes to same address",
+      "covered_by": ["RAM_TP008", "RAM_TP009"],
+      "status": "covered"
+    },
+    {
+      "feature": "Alternating bit patterns",
+      "covered_by": ["RAM_TP010", "RAM_TP013"],
+      "status": "covered"
+    },
+    {
+      "feature": "Address wrapping (4-bit mask)",
+      "covered_by": ["RAM_TP011", "RAM_TP012"],
+      "status": "covered"
+    }
+  ]
+}

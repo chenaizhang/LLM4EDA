@@ -1,0 +1,152 @@
+{
+  "module_type": "sequential",
+  "test_vectors": [
+    {
+      "id": "RF_TP001",
+      "desc": "Write x1=42, read back from port A",
+      "inputs": {
+        "setRd0I": 1,
+        "setRd0ValueI": 42,
+        "setRa0I": 1
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RF_TP002",
+      "desc": "Write x5=100, read both ports from x5",
+      "inputs": {
+        "setRd0I": 5,
+        "setRd0ValueI": 100,
+        "setRa0I": 5,
+        "setRb0I": 5
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RF_TP003",
+      "desc": "Read x0 (hardwired zero, should always return 0)",
+      "inputs": {
+        "setRa0I": 0,
+        "setRb0I": 0
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RF_TP004",
+      "desc": "Write to x0=99 (should be ignored, x0 stays 0)",
+      "inputs": {
+        "setRd0I": 0,
+        "setRd0ValueI": 99,
+        "setRa0I": 0,
+        "setRb0I": 0
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RF_TP005",
+      "desc": "Write x10=0xDEADBEEF, read back from port A",
+      "inputs": {
+        "setRd0I": 10,
+        "setRd0ValueI": 3735928559,
+        "setRa0I": 10,
+        "setRb0I": 10
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RF_TP006",
+      "desc": "Write x3=50, read x3 from port A and x7 from port B (different)",
+      "inputs": {
+        "setRd0I": 3,
+        "setRd0ValueI": 50,
+        "setRa0I": 3,
+        "setRb0I": 7
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RF_TP007",
+      "desc": "Read-after-write forwarding: same cycle write x8=77 and read x8 (should forward)",
+      "inputs": {
+        "setRd0I": 8,
+        "setRd0ValueI": 77,
+        "setRa0I": 8,
+        "setRb0I": 8
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RF_TP008",
+      "desc": "Write x31=0x12345678, read back",
+      "inputs": {
+        "setRd0I": 31,
+        "setRd0ValueI": 305419896,
+        "setRa0I": 31,
+        "setRb0I": 31
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RF_TP009",
+      "desc": "Multiple writes to x15: write 111 then write 222, verify 222 persists",
+      "inputs": {
+        "setRd0I": 15,
+        "setRd0ValueI": 111,
+        "setRa0I": 15,
+        "setRb0I": 15
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RF_TP010",
+      "desc": "Second write to x15, verify new value",
+      "inputs": {
+        "setRd0I": 15,
+        "setRd0ValueI": 222,
+        "setRa0I": 15,
+        "setRb0I": 15
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RF_TP011",
+      "desc": "Read two different registers (x1=42, x5=100 from previous tests)",
+      "inputs": {
+        "setRa0I": 1,
+        "setRb0I": 5
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RF_TP012",
+      "desc": "Forwarding test: write x12=0xA5A5A5A5 and read same cycle from both ports",
+      "inputs": {
+        "setRd0I": 12,
+        "setRd0ValueI": 2779096485,
+        "setRa0I": 12,
+        "setRb0I": 12
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RF_TP013",
+      "desc": "Write x20=0xFFFF0000, read back port A next cycle",
+      "inputs": {
+        "setRd0I": 20,
+        "setRd0ValueI": 4294901760,
+        "setRa0I": 20,
+        "setRb0I": 20
+      },
+      "wait_cycles": 1
+    },
+    {
+      "id": "RF_TP014",
+      "desc": "Read x20 from previous test (verify persistence)",
+      "inputs": {
+        "setRa0I": 20,
+        "setRb0I": 20
+      },
+      "wait_cycles": 1
+    }
+  ]
+}

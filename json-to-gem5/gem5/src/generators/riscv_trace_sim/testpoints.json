@@ -1,0 +1,11 @@
+{
+  "testpoints": [
+    "TP001: Trace single valid instruction",
+    "TP002: Invalid (valid=0) - no logging",
+    "TP003: Multiple instructions (first)",
+    "TP004: Multiple instructions (second)",
+    "TP005: Max opcode value",
+    "TP006: Zero PC and opcode",
+    "TP007: Alternating valid/invalid"
+  ]
+}
