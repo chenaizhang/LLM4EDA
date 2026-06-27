@@ -5,6 +5,7 @@ Verilog/Json converter
 | # | Benchmark | 描述 | 数量 | SConscript |
 |---|------|------|---------|------------|
 | 1 | Generated dataset 1 | 基础Verilog语法 | 100 | ✅ |  
+| 2 | Verilog Eval 2 | 更抽象地指定模块接口 | 156 | ✅ |  
   
 The Verilog/Json conversion model is currently undergoing iterative testing.
 ```shell
@@ -17,6 +18,7 @@ The Verilog/Json conversion model is currently undergoing iterative testing.
 | # | Benchmark | 描述 | 数量 | SConscript |
 |---|------|------|---------|------------|
 | 1 | Generated dataset 1 | 基础Verilog语法 | 100 | ✅ |
+| 2 | Verilog Eval 2 | 更抽象地指定模块接口 | 156 | ✅ | 
   
 The Verilog/Json conversion model is currently undergoing iterative testing.
 ```shell
