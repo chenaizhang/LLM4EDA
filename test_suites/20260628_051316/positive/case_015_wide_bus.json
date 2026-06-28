@@ -1,0 +1,69 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "design_name": "wide_bus",
+    "top_module": "top"
+  },
+  "modules": [
+    {
+      "name": "top",
+      "ports": [
+        {
+          "name": "bus0",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 256
+        },
+        {
+          "name": "bus1",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 256
+        },
+        {
+          "name": "bus2",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 256
+        },
+        {
+          "name": "bus3",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 256
+        },
+        {
+          "name": "bus4",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 256
+        },
+        {
+          "name": "bus5",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 256
+        },
+        {
+          "name": "bus6",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 256
+        },
+        {
+          "name": "bus7",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 256
+        }
+      ],
+      "signals": [
+        {
+          "name": "cnt",
+          "type": "reg",
+          "width": 8
+        }
+      ]
+    }
+  ]
+}

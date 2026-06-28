@@ -1,0 +1,383 @@
+{
+  "$schema": "https://your-domain.com/verilog-bidirectional-schema-v1.json",
+  "version": "1.0.0",
+  "metadata": {
+    "design_name": "riscv_pipeline",
+    "source_files": [
+      "/path/to/riscv_core.v"
+    ],
+    "top_module": "riscv_core",
+    "description": "RISC-V 5\u7ea7\u6d41\u6c34\u7ebf\u6838\u5fc3 (\u652f\u6301\u53cc\u5411\u8f6c\u6362)",
+    "generated_by": "verilog2json v2.0",
+    "generated_at": "2026-06-25T12:00:00Z"
+  },
+  "includes": [
+    "defines.vh"
+  ],
+  "defines": [
+    {
+      "name": "WORD_SIZE",
+      "value": "32"
+    },
+    {
+      "name": "RESET_PC",
+      "value": "32'h00001000"
+    }
+  ],
+  "modules": [
+    {
+      "name": "alu",
+      "description": "ALU \u6a21\u5757",
+      "parameters": [
+        {
+          "name": "WIDTH",
+          "type": "parameter",
+          "data_type": "int",
+          "value": "32"
+        }
+      ],
+      "ports": [
+        {
+          "name": "a",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 32,
+          "signed": false
+        },
+        {
+          "name": "b",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 32,
+          "signed": false
+        },
+        {
+          "name": "op",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 4,
+          "signed": false
+        },
+        {
+          "name": "result",
+          "direction": "output",
+          "data_type": "reg",
+          "width": 32,
+          "signed": false
+        }
+      ],
+      "signals": []
+    },
+    {
+      "name": "special_alu_32",
+      "description": "32-bit special ALU",
+      "ports": [],
+      "signals": []
+    },
+    {
+      "name": "riscv_core",
+      "description": "\u9876\u5c42 CPU \u6838\u5fc3",
+      "parameters": [
+        {
+          "name": "XLEN",
+          "type": "parameter",
+          "data_type": "int",
+          "value": "32",
+          "description": "\u6570\u636e\u4f4d\u5bbd"
+        }
+      ],
+      "ports": [
+        {
+          "name": "clk",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1,
+          "signed": false
+        },
+        {
+          "name": "rst_n",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1,
+          "signed": false
+        },
+        {
+          "name": "inst_mem_addr",
+          "direction": "output",
+          "data_type": "reg",
+          "width": 32,
+          "signed": false
+        },
+        {
+          "name": "inst_mem_data",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 32,
+          "signed": false
+        }
+      ],
+      "signals": [
+        {
+          "name": "pc_current",
+          "type": "reg",
+          "width": 32,
+          "initial_value": "32'h0"
+        },
+        {
+          "name": "pc_next",
+          "type": "wire",
+          "width": 32
+        },
+        {
+          "name": "instruction",
+          "type": "wire",
+          "width": 32
+        }
+      ],
+      "functions": [
+        {
+          "name": "alu_add",
+          "return_type": "logic [31:0]",
+          "inputs": [
+            {
+              "name": "a",
+              "direction": "input",
+              "data_type": "logic",
+              "width": 32
+            },
+            {
+              "name": "b",
+              "direction": "input",
+              "data_type": "logic",
+              "width": 32
+            }
+          ],
+          "body": [
+            {
+              "type": "return",
+              "value": {
+                "op": "+",
+                "left": {
+                  "ref": "a"
+                },
+                "right": {
+                  "ref": "b"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "name": "pipeline_flush",
+          "inputs": [],
+          "outputs": [],
+          "body": [
+            {
+              "type": "assignment",
+              "lhs": {
+                "ref": "pc_current"
+              },
+              "rhs": {
+                "ref": "pc_next"
+              },
+              "blocking": true
+            }
+          ]
+        }
+      ],
+      "always_blocks": [
+        {
+          "id": "proc_pc",
+          "type": "always_ff",
+          "sensitivity": [
+            {
+              "type": "posedge",
+              "signal": "clk"
+            },
+            {
+              "type": "negedge",
+              "signal": "rst_n"
+            }
+          ],
+          "description": "PC \u66f4\u65b0",
+          "body": [
+            {
+              "type": "if",
+              "condition": {
+                "op": "!",
+                "operand": {
+                  "ref": "rst_n"
+                }
+              },
+              "then": [
+                {
+                  "type": "assignment",
+                  "lhs": {
+                    "ref": "pc_current"
+                  },
+                  "rhs": {
+                    "literal": "32'h00001000"
+                  },
+                  "blocking": false
+                }
+              ],
+              "else": [
+                {
+                  "type": "assignment",
+                  "lhs": {
+                    "ref": "pc_current"
+                  },
+                  "rhs": {
+                    "op": "+",
+                    "left": {
+                      "ref": "pc_current"
+                    },
+                    "right": {
+                      "literal": "32'h4"
+                    }
+                  },
+                  "blocking": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "proc_decode",
+          "type": "always_comb",
+          "sensitivity": [],
+          "description": "\u8bd1\u7801\u7ec4\u5408\u903b\u8f91",
+          "body": [
+            {
+              "type": "case",
+              "expression": {
+                "ref": "instruction"
+              },
+              "items": [
+                {
+                  "value": {
+                    "literal": "32'b00000000000000000000000000110011"
+                  },
+                  "body": [
+                    {
+                      "type": "assignment",
+                      "lhs": {
+                        "ref": "pc_next"
+                      },
+                      "rhs": {
+                        "ref": "alu_result"
+                      },
+                      "blocking": true
+                    }
+                  ]
+                }
+              ],
+              "default": [
+                {
+                  "type": "assignment",
+                  "lhs": {
+                    "ref": "pc_next"
+                  },
+                  "rhs": {
+                    "op": "+",
+                    "left": {
+                      "ref": "pc_current"
+                    },
+                    "right": {
+                      "literal": "32'h4"
+                    }
+                  },
+                  "blocking": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "id": "assign_inst_addr",
+          "lhs": {
+            "ref": "inst_mem_addr"
+          },
+          "rhs": {
+            "ref": "pc_current"
+          },
+          "blocking": true,
+          "delay": {
+            "value": "1",
+            "type": "unit"
+          }
+        }
+      ],
+      "instances": [
+        {
+          "name": "u_alu",
+          "module": "alu",
+          "parameter_mapping": {
+            "WIDTH": {
+              "ref": "XLEN"
+            }
+          },
+          "port_connections": [
+            {
+              "port": "a",
+              "connection": {
+                "ref": "pc_current"
+              }
+            },
+            {
+              "port": "b",
+              "connection": {
+                "literal": "32'h4"
+              }
+            },
+            {
+              "port": "op",
+              "connection": {
+                "ref": "alu_op"
+              }
+            },
+            {
+              "port": "result",
+              "connection": {
+                "ref": "alu_result"
+              }
+            }
+          ]
+        }
+      ],
+      "generates": [
+        {
+          "condition": {
+            "op": "==",
+            "left": {
+              "ref": "XLEN"
+            },
+            "right": {
+              "literal": "32"
+            }
+          },
+          "body": [
+            {
+              "type": "instance",
+              "name": "u_special_32bit",
+              "module": "special_alu_32",
+              "port_connections": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "design_hierarchy": {
+    "top": "riscv_core",
+    "tree": {
+      "riscv_core": [
+        "u_alu"
+      ]
+    }
+  }
+}

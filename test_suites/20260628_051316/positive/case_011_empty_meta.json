@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "design_name": "empty_meta",
+    "top_module": "test"
+  },
+  "modules": [
+    {
+      "name": "test",
+      "ports": [
+        {
+          "name": "clk",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1
+        }
+      ],
+      "signals": []
+    }
+  ]
+}

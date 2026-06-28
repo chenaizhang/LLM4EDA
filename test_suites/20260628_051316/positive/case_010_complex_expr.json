@@ -1,0 +1,100 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "design_name": "complex_expr",
+    "top_module": "top"
+  },
+  "modules": [
+    {
+      "name": "top",
+      "ports": [
+        {
+          "name": "a",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 32
+        },
+        {
+          "name": "b",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 32
+        },
+        {
+          "name": "sel",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 2
+        },
+        {
+          "name": "out",
+          "direction": "output",
+          "data_type": "reg",
+          "width": 32
+        }
+      ],
+      "signals": [
+        {
+          "name": "mux_out",
+          "type": "wire",
+          "width": 32
+        }
+      ],
+      "assignments": [
+        {
+          "lhs": {
+            "ref": "mux_out"
+          },
+          "rhs": {
+            "type": "cond",
+            "condition": {
+              "op": "==",
+              "left": {
+                "ref": "sel"
+              },
+              "right": {
+                "literal": "2'b00"
+              }
+            },
+            "true_expr": {
+              "ref": "a"
+            },
+            "false_expr": {
+              "type": "cond",
+              "condition": {
+                "op": "==",
+                "left": {
+                  "ref": "sel"
+                },
+                "right": {
+                  "literal": "2'b01"
+                }
+              },
+              "true_expr": {
+                "ref": "b"
+              },
+              "false_expr": {
+                "type": "concat",
+                "parts": [
+                  {
+                    "type": "replicate",
+                    "times": {
+                      "literal": "16"
+                    },
+                    "value": {
+                      "literal": "1'b1"
+                    }
+                  },
+                  {
+                    "literal": "16'h0000"
+                  }
+                ]
+              }
+            }
+          },
+          "blocking": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "design_name": "pkg_test",
+    "top_module": "use_pkg"
+  },
+  "packages": [
+    {
+      "name": "pkg1",
+      "items": [
+        {
+          "name": "WIDTH",
+          "value": "32"
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "name": "use_pkg",
+      "ports": [
+        {
+          "name": "a",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1
+        }
+      ],
+      "signals": []
+    }
+  ]
+}

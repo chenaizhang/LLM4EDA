@@ -1,0 +1,221 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "design_name": "multiport",
+    "top_module": "top"
+  },
+  "modules": [
+    {
+      "name": "top",
+      "ports": [
+        {
+          "name": "p0",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1,
+          "signed": false
+        },
+        {
+          "name": "p1",
+          "direction": "output",
+          "data_type": "wire",
+          "width": 8,
+          "signed": false
+        },
+        {
+          "name": "p2",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 16,
+          "signed": false
+        },
+        {
+          "name": "p3",
+          "direction": "output",
+          "data_type": "wire",
+          "width": 32,
+          "signed": false
+        },
+        {
+          "name": "p4",
+          "direction": "inout",
+          "data_type": "wire",
+          "width": 8,
+          "signed": false
+        },
+        {
+          "name": "p5",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1,
+          "signed": false
+        },
+        {
+          "name": "p6",
+          "direction": "output",
+          "data_type": "wire",
+          "width": 1,
+          "signed": false
+        },
+        {
+          "name": "p7",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 4,
+          "signed": false
+        },
+        {
+          "name": "p8",
+          "direction": "output",
+          "data_type": "wire",
+          "width": 4,
+          "signed": false
+        },
+        {
+          "name": "p9",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 8,
+          "signed": false
+        },
+        {
+          "name": "p10",
+          "direction": "output",
+          "data_type": "wire",
+          "width": 16,
+          "signed": false
+        },
+        {
+          "name": "p11",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 32,
+          "signed": false
+        },
+        {
+          "name": "p12",
+          "direction": "output",
+          "data_type": "wire",
+          "width": 64,
+          "signed": false
+        },
+        {
+          "name": "p13",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 8,
+          "signed": false
+        },
+        {
+          "name": "p14",
+          "direction": "output",
+          "data_type": "wire",
+          "width": 8,
+          "signed": false
+        }
+      ],
+      "signals": [
+        {
+          "name": "s0",
+          "type": "reg",
+          "width": 1
+        },
+        {
+          "name": "s1",
+          "type": "wire",
+          "width": 2
+        },
+        {
+          "name": "s2",
+          "type": "reg",
+          "width": 3
+        },
+        {
+          "name": "s3",
+          "type": "wire",
+          "width": 4
+        },
+        {
+          "name": "s4",
+          "type": "reg",
+          "width": 5
+        },
+        {
+          "name": "s5",
+          "type": "wire",
+          "width": 6
+        },
+        {
+          "name": "s6",
+          "type": "reg",
+          "width": 7
+        },
+        {
+          "name": "s7",
+          "type": "wire",
+          "width": 8
+        },
+        {
+          "name": "s8",
+          "type": "reg",
+          "width": 9
+        },
+        {
+          "name": "s9",
+          "type": "wire",
+          "width": 10
+        },
+        {
+          "name": "s10",
+          "type": "reg",
+          "width": 11
+        },
+        {
+          "name": "s11",
+          "type": "wire",
+          "width": 12
+        },
+        {
+          "name": "s12",
+          "type": "reg",
+          "width": 13
+        },
+        {
+          "name": "s13",
+          "type": "wire",
+          "width": 14
+        },
+        {
+          "name": "s14",
+          "type": "reg",
+          "width": 15
+        },
+        {
+          "name": "s15",
+          "type": "wire",
+          "width": 16
+        },
+        {
+          "name": "s16",
+          "type": "reg",
+          "width": 17
+        },
+        {
+          "name": "s17",
+          "type": "wire",
+          "width": 18
+        },
+        {
+          "name": "s18",
+          "type": "reg",
+          "width": 19
+        },
+        {
+          "name": "s19",
+          "type": "wire",
+          "width": 20
+        }
+      ]
+    }
+  ]
+}

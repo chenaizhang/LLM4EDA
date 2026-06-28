@@ -1,0 +1,134 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "design_name": "generate_test",
+    "top_module": "gen_top"
+  },
+  "modules": [
+    {
+      "name": "adder_cell",
+      "ports": [
+        {
+          "name": "a",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1
+        },
+        {
+          "name": "b",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1
+        },
+        {
+          "name": "ci",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1
+        },
+        {
+          "name": "s",
+          "direction": "output",
+          "data_type": "wire",
+          "width": 1
+        },
+        {
+          "name": "co",
+          "direction": "output",
+          "data_type": "wire",
+          "width": 1
+        }
+      ],
+      "signals": []
+    },
+    {
+      "name": "gen_top",
+      "ports": [
+        {
+          "name": "a",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 4
+        },
+        {
+          "name": "b",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 4
+        },
+        {
+          "name": "sum",
+          "direction": "output",
+          "data_type": "wire",
+          "width": 4
+        }
+      ],
+      "signals": [
+        {
+          "name": "c",
+          "type": "wire",
+          "width": 5
+        }
+      ],
+      "instances": [
+        {
+          "name": "u0",
+          "module": "adder_cell",
+          "port_connections": [
+            {
+              "port": "a",
+              "connection": {
+                "ref": "a"
+              }
+            },
+            {
+              "port": "b",
+              "connection": {
+                "ref": "b"
+              }
+            },
+            {
+              "port": "ci",
+              "connection": {
+                "literal": "1'b0"
+              }
+            },
+            {
+              "port": "s",
+              "connection": {
+                "ref": "sum"
+              }
+            },
+            {
+              "port": "co",
+              "connection": {
+                "ref": "c"
+              }
+            }
+          ]
+        }
+      ],
+      "generates": [
+        {
+          "condition": {
+            "op": "==",
+            "left": {
+              "ref": "c"
+            },
+            "right": {
+              "literal": "1'b1"
+            }
+          },
+          "body": [
+            {
+              "type": "instance",
+              "name": "u_extra",
+              "module": "adder_cell",
+              "port_connections": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "design_name": "multi_always",
+    "description": "Simple counter",
+    "top_module": "counter_top",
+    "source_files": [
+      "counter.v"
+    ],
+    "generated_by": "test_gen",
+    "generated_at": "2026-06-28T00:00:00Z"
+  },
+  "includes": [
+    "defines.vh"
+  ],
+  "defines": [
+    {
+      "name": "MAX",
+      "value": "255"
+    },
+    {
+      "name": "WIDTH",
+      "value": "8"
+    }
+  ],
+  "modules": [
+    {
+      "name": "counter_top",
+      "description": "top counter",
+      "parameters": [
+        {
+          "name": "W",
+          "type": "parameter",
+          "data_type": "int",
+          "value": "8"
+        }
+      ],
+      "ports": [
+        {
+          "name": "clk",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1,
+          "signed": false
+        },
+        {
+          "name": "rst",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1,
+          "signed": false
+        },
+        {
+          "name": "out",
+          "direction": "output",
+          "data_type": "reg",
+          "width": 8,
+          "signed": false
+        }
+      ],
+      "signals": [
+        {
+          "name": "count",
+          "type": "reg",
+          "width": 8,
+          "initial_value": "8'h00"
+        },
+        {
+          "name": "next_count",
+          "type": "wire",
+          "width": 8
+        }
+      ],
+      "always_blocks": [
+        {
+          "id": "seq",
+          "type": "always_ff",
+          "sensitivity": [
+            {
+              "type": "posedge",
+              "signal": "clk"
+            },
+            {
+              "type": "negedge",
+              "signal": "rst"
+            }
+          ],
+          "body": [
+            {
+              "type": "if",
+              "condition": {
+                "op": "!",
+                "operand": {
+                  "ref": "rst"
+                }
+              },
+              "then": [
+                {
+                  "type": "assignment",
+                  "lhs": {
+                    "ref": "count"
+                  },
+                  "rhs": {
+                    "literal": "8'h00"
+                  },
+                  "blocking": false
+                }
+              ],
+              "else": [
+                {
+                  "type": "assignment",
+                  "lhs": {
+                    "ref": "count"
+                  },
+                  "rhs": {
+                    "ref": "next_count"
+                  },
+                  "blocking": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "seq2",
+          "type": "always_ff",
+          "sensitivity": [
+            {
+              "type": "posedge",
+              "signal": "clk"
+            },
+            {
+              "type": "negedge",
+              "signal": "rst"
+            }
+          ],
+          "body": [
+            {
+              "type": "if",
+              "condition": {
+                "op": "!",
+                "operand": {
+                  "ref": "rst"
+                }
+              },
+              "then": [
+                {
+                  "type": "assignment",
+                  "lhs": {
+                    "ref": "count"
+                  },
+                  "rhs": {
+                    "literal": "8'h00"
+                  },
+                  "blocking": false
+                }
+              ],
+              "else": [
+                {
+                  "type": "assignment",
+                  "lhs": {
+                    "ref": "count"
+                  },
+                  "rhs": {
+                    "ref": "next_count"
+                  },
+                  "blocking": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "id": "inc",
+          "lhs": {
+            "ref": "next_count"
+          },
+          "rhs": {
+            "op": "+",
+            "left": {
+              "ref": "count"
+            },
+            "right": {
+              "literal": "8'h01"
+            }
+          },
+          "blocking": true
+        }
+      ]
+    }
+  ],
+  "design_hierarchy": {
+    "top": "counter_top",
+    "tree": {
+      "counter_top": []
+    }
+  }
+}

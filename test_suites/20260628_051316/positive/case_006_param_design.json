@@ -1,0 +1,106 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "design_name": "param_design",
+    "top_module": "configurable_adder"
+  },
+  "modules": [
+    {
+      "name": "configurable_adder",
+      "parameters": [
+        {
+          "name": "WIDTH",
+          "type": "parameter",
+          "data_type": "int",
+          "value": "16"
+        },
+        {
+          "name": "USE_PIPE",
+          "type": "parameter",
+          "data_type": "int",
+          "value": "1"
+        }
+      ],
+      "ports": [
+        {
+          "name": "clk",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1,
+          "signed": false
+        },
+        {
+          "name": "a",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 16,
+          "signed": false
+        },
+        {
+          "name": "b",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 16,
+          "signed": false
+        },
+        {
+          "name": "sum",
+          "direction": "output",
+          "data_type": "reg",
+          "width": 16,
+          "signed": false
+        }
+      ],
+      "signals": [
+        {
+          "name": "w_sum",
+          "type": "wire",
+          "width": 16,
+          "signed": false
+        }
+      ],
+      "assignments": [
+        {
+          "id": "calc",
+          "lhs": {
+            "ref": "w_sum"
+          },
+          "rhs": {
+            "op": "+",
+            "left": {
+              "ref": "a"
+            },
+            "right": {
+              "ref": "b"
+            }
+          },
+          "blocking": true
+        }
+      ],
+      "always_blocks": [
+        {
+          "id": "pipe",
+          "type": "always_ff",
+          "sensitivity": [
+            {
+              "type": "posedge",
+              "signal": "clk"
+            }
+          ],
+          "body": [
+            {
+              "type": "assignment",
+              "lhs": {
+                "ref": "sum"
+              },
+              "rhs": {
+                "ref": "w_sum"
+              },
+              "blocking": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

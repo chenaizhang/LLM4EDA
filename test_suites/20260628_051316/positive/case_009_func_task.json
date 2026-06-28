@@ -1,0 +1,125 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "design_name": "func_task",
+    "top_module": "top"
+  },
+  "modules": [
+    {
+      "name": "top",
+      "ports": [
+        {
+          "name": "a",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 8
+        },
+        {
+          "name": "b",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 8
+        },
+        {
+          "name": "clk",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1
+        },
+        {
+          "name": "result",
+          "direction": "output",
+          "data_type": "reg",
+          "width": 16
+        }
+      ],
+      "signals": [
+        {
+          "name": "sum",
+          "type": "wire",
+          "width": 16
+        }
+      ],
+      "functions": [
+        {
+          "name": "mul",
+          "return_type": "logic [15:0]",
+          "inputs": [
+            {
+              "name": "x",
+              "direction": "input",
+              "data_type": "logic",
+              "width": 8
+            },
+            {
+              "name": "y",
+              "direction": "input",
+              "data_type": "logic",
+              "width": 8
+            }
+          ],
+          "body": [
+            {
+              "type": "return",
+              "value": {
+                "op": "*",
+                "left": {
+                  "ref": "x"
+                },
+                "right": {
+                  "ref": "y"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "name": "update_result",
+          "inputs": [
+            {
+              "name": "val",
+              "direction": "input",
+              "data_type": "wire",
+              "width": 16
+            }
+          ],
+          "outputs": [],
+          "body": [
+            {
+              "type": "assignment",
+              "lhs": {
+                "ref": "result"
+              },
+              "rhs": {
+                "ref": "val"
+              },
+              "blocking": true
+            }
+          ]
+        }
+      ],
+      "assignments": [
+        {
+          "lhs": {
+            "ref": "sum"
+          },
+          "rhs": {
+            "type": "call",
+            "function": "mul",
+            "arguments": [
+              {
+                "ref": "a"
+              },
+              {
+                "ref": "b"
+              }
+            ]
+          },
+          "blocking": true
+        }
+      ]
+    }
+  ]
+}

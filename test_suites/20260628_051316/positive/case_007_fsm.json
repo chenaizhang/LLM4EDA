@@ -1,0 +1,156 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "design_name": "fsm",
+    "top_module": "fsm"
+  },
+  "modules": [
+    {
+      "name": "fsm",
+      "ports": [
+        {
+          "name": "clk",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1,
+          "signed": false
+        },
+        {
+          "name": "rst",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1,
+          "signed": false
+        },
+        {
+          "name": "go",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1,
+          "signed": false
+        },
+        {
+          "name": "done",
+          "direction": "output",
+          "data_type": "reg",
+          "width": 1,
+          "signed": false
+        }
+      ],
+      "signals": [
+        {
+          "name": "state",
+          "type": "reg",
+          "width": 2,
+          "initial_value": "2'b00"
+        },
+        {
+          "name": "next_state",
+          "type": "wire",
+          "width": 2
+        }
+      ],
+      "always_blocks": [
+        {
+          "id": "state_seq",
+          "type": "always_ff",
+          "sensitivity": [
+            {
+              "type": "posedge",
+              "signal": "clk"
+            },
+            {
+              "type": "negedge",
+              "signal": "rst"
+            }
+          ],
+          "body": [
+            {
+              "type": "if",
+              "condition": {
+                "op": "!",
+                "operand": {
+                  "ref": "rst"
+                }
+              },
+              "then": [
+                {
+                  "type": "assignment",
+                  "lhs": {
+                    "ref": "state"
+                  },
+                  "rhs": {
+                    "literal": "2'b00"
+                  },
+                  "blocking": false
+                }
+              ],
+              "else": [
+                {
+                  "type": "assignment",
+                  "lhs": {
+                    "ref": "state"
+                  },
+                  "rhs": {
+                    "ref": "next_state"
+                  },
+                  "blocking": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "state_comb",
+          "type": "always_comb",
+          "sensitivity": [],
+          "body": [
+            {
+              "type": "case",
+              "expression": {
+                "ref": "state"
+              },
+              "items": [
+                {
+                  "value": {
+                    "op": "+",
+                    "left": {
+                      "literal": "2'b00"
+                    },
+                    "right": {
+                      "literal": "2'b01"
+                    }
+                  },
+                  "body": [
+                    {
+                      "type": "assignment",
+                      "lhs": {
+                        "ref": "next_state"
+                      },
+                      "rhs": {
+                        "ref": "go"
+                      },
+                      "blocking": true
+                    }
+                  ]
+                }
+              ],
+              "default": [
+                {
+                  "type": "assignment",
+                  "lhs": {
+                    "ref": "done"
+                  },
+                  "rhs": {
+                    "literal": "1'b1"
+                  },
+                  "blocking": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

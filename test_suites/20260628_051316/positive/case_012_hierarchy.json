@@ -1,0 +1,89 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "design_name": "hier",
+    "top_module": "top"
+  },
+  "modules": [
+    {
+      "name": "sub_a",
+      "ports": [
+        {
+          "name": "i",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1
+        }
+      ],
+      "signals": []
+    },
+    {
+      "name": "sub_b",
+      "ports": [
+        {
+          "name": "i",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1
+        }
+      ],
+      "signals": []
+    },
+    {
+      "name": "top",
+      "ports": [
+        {
+          "name": "clk",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1
+        }
+      ],
+      "signals": [
+        {
+          "name": "s",
+          "type": "wire",
+          "width": 1,
+          "signed": true
+        }
+      ],
+      "instances": [
+        {
+          "name": "u_a",
+          "module": "sub_a",
+          "port_connections": [
+            {
+              "port": "i",
+              "connection": {
+                "ref": "clk"
+              }
+            }
+          ]
+        },
+        {
+          "name": "u_b",
+          "module": "sub_b",
+          "port_connections": [
+            {
+              "port": "i",
+              "connection": {
+                "ref": "clk"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "design_hierarchy": {
+    "top": "top",
+    "tree": {
+      "top": [
+        "u_a",
+        "u_b"
+      ],
+      "sub_a": [],
+      "sub_b": []
+    }
+  }
+}

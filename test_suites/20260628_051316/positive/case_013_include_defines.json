@@ -1,0 +1,45 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "design_name": "include_defines_test",
+    "top_module": "test",
+    "description": "Test includes and defines only"
+  },
+  "includes": [
+    "std.vh",
+    "config.vh",
+    "types.vh"
+  ],
+  "defines": [
+    {
+      "name": "A",
+      "value": "1"
+    },
+    {
+      "name": "B",
+      "value": "2"
+    },
+    {
+      "name": "C",
+      "value": "3"
+    },
+    {
+      "name": "D",
+      "value": "4"
+    }
+  ],
+  "modules": [
+    {
+      "name": "test",
+      "ports": [
+        {
+          "name": "clk",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1
+        }
+      ],
+      "signals": []
+    }
+  ]
+}

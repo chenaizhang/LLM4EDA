@@ -1,0 +1,90 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "design_name": "signed_test",
+    "top_module": "top"
+  },
+  "modules": [
+    {
+      "name": "top",
+      "ports": [
+        {
+          "name": "a",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 8,
+          "signed": true
+        },
+        {
+          "name": "b",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 8,
+          "signed": true
+        },
+        {
+          "name": "clk",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1
+        },
+        {
+          "name": "result",
+          "direction": "output",
+          "data_type": "reg",
+          "width": 8,
+          "signed": true
+        }
+      ],
+      "signals": [
+        {
+          "name": "diff",
+          "type": "wire",
+          "width": 8,
+          "signed": true
+        }
+      ],
+      "assignments": [
+        {
+          "lhs": {
+            "ref": "diff"
+          },
+          "rhs": {
+            "op": "-",
+            "left": {
+              "ref": "a"
+            },
+            "right": {
+              "ref": "b"
+            }
+          },
+          "blocking": true
+        }
+      ],
+      "always_blocks": [
+        {
+          "id": "reg_out",
+          "type": "always_ff",
+          "sensitivity": [
+            {
+              "type": "posedge",
+              "signal": "clk"
+            }
+          ],
+          "body": [
+            {
+              "type": "assignment",
+              "lhs": {
+                "ref": "result"
+              },
+              "rhs": {
+                "ref": "diff"
+              },
+              "blocking": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

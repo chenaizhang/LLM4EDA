@@ -1,0 +1,55 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "design_name": "variant_33",
+    "top_module": "top"
+  },
+  "modules": [
+    {
+      "name": "variant_33",
+      "ports": [
+        {
+          "name": "p0",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1
+        },
+        {
+          "name": "p1",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 2
+        },
+        {
+          "name": "p2",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 3
+        },
+        {
+          "name": "p3",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 4
+        }
+      ],
+      "signals": [
+        {
+          "name": "s0",
+          "type": "reg",
+          "width": 1
+        },
+        {
+          "name": "s1",
+          "type": "reg",
+          "width": 2
+        },
+        {
+          "name": "s2",
+          "type": "reg",
+          "width": 3
+        }
+      ]
+    }
+  ]
+}

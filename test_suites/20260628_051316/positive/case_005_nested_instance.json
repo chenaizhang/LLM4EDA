@@ -1,0 +1,79 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "design_name": "nested",
+    "top_module": "top"
+  },
+  "modules": [
+    {
+      "name": "leaf",
+      "ports": [
+        {
+          "name": "a",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1
+        }
+      ],
+      "signals": []
+    },
+    {
+      "name": "mid",
+      "ports": [
+        {
+          "name": "a",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1
+        }
+      ],
+      "signals": [],
+      "instances": [
+        {
+          "name": "u_leaf",
+          "module": "leaf",
+          "port_connections": [
+            {
+              "port": "a",
+              "connection": {
+                "ref": "a"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "top",
+      "ports": [
+        {
+          "name": "clk",
+          "direction": "input",
+          "data_type": "wire",
+          "width": 1
+        }
+      ],
+      "signals": [
+        {
+          "name": "mid_sig",
+          "type": "wire",
+          "width": 1
+        }
+      ],
+      "instances": [
+        {
+          "name": "u_mid",
+          "module": "mid",
+          "port_connections": [
+            {
+              "port": "a",
+              "connection": {
+                "ref": "mid_sig"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
