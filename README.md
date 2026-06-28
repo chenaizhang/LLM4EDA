@@ -152,6 +152,15 @@ To ensure the correctness of the Verilog↔JSON conversion, we follow a **two-st
 1. **Dataset preparation** – [`Benchmark/workflow_dataset.md`](Benchmark/workflow_dataset.md)  
 2. **Iterative verification** – [`Benchmark/workflow_process.md`](Benchmark/workflow_process.md)
 
+### Json Spec Validation
+
+| 类别 | 总数 | 正确 | 通过率 |
+|------|------|------|--------|
+| 正例集 | 35 | 35 | **100%** |
+| 负例集 | 50 | 50 | **100%** |
+| 鲁棒性集 | 14 | 14 | **100%** |
+| **总计** | 99 | 99 | **100%** |
+
 ### Verilog → JSON Benchmarks
 
 | Benchmark | 描述 | 数量 | SConscript |
